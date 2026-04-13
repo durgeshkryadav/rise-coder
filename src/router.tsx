@@ -5,6 +5,7 @@ import HomePage from '@/containers/HomePage/Loadable';
 import TopicPage from '@/containers/TopicPage/Loadable';
 import NotFoundPage from '@/containers/NotFoundPage/Loadable';
 import FeaturePage from '@/containers/FeaturePage/Loadable';
+import Blind75Page from '@/pages/Blind75Page';
 import LoginPage from '@/pages/auth/LoginPage';
 import SignupPage from '@/pages/auth/SignupPage';
 import ForgotPasswordPage from '@/pages/auth/ForgotPasswordPage';
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: 'features', element: <FeaturePage /> },
+      { path: 'dsa/blind-75', element: <Blind75Page /> },
       { path: ':section', element: <HomePage /> },
       { path: ':section/:topic', element: <TopicPage /> },
       { path: '*', element: <NotFoundPage /> },
