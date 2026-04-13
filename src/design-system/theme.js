@@ -28,7 +28,7 @@ const lightColors = {
 
 /**
  * RiseCoders — MUI Theme Factory
- * Portfolio dark theme: deep purple-black (#14131a) + vibrant green (#2bd576).
+ * Luxury dark theme: deep purple-black (#14131a) + gold (#D4A853).
  * Supports 'dark' (default) and 'light' modes.
  */
 export function createAppTheme(mode = 'dark') {
@@ -40,7 +40,7 @@ export function createAppTheme(mode = 'dark') {
     palette: {
       mode,
       primary: {
-        main: colors.brand[400],     // #2bd576 vibrant green
+        main: colors.brand[400],     // #D4A853 luxury gold
         light: colors.brand[300],
         dark: colors.brand[600],
         contrastText: '#14131a',
@@ -152,15 +152,15 @@ export function createAppTheme(mode = 'dark') {
         styleOverrides: {
           root: {
             borderRadius: layout.borderRadius.md,
-            transition: `all ${motion.duration.fast} ${motion.easing.default}`,
+            transition: `background-color 300ms ${motion.easing.default}, color 300ms ${motion.easing.default}`,
             '&:hover': {
-              backgroundColor: surface[200],
+              backgroundColor: `${neutral[500]}20`,  // mode-aware subtle hover
             },
             '&.Mui-selected': {
-              backgroundColor: `${colors.brand[400]}18`,
+              backgroundColor: `${colors.brand[400]}1A`,
               color: colors.brand[400],
               '&:hover': {
-                backgroundColor: `${colors.brand[400]}24`,
+                backgroundColor: `${colors.brand[400]}30`,
               },
             },
           },

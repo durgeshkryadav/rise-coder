@@ -1,25 +1,24 @@
 @import "tailwindcss";
 
 /*
- * RiseCoders — Portfolio Dark Theme
- * Exact theme from durgesh-yadav portfolio.
- * Deep dark purple-black backgrounds, vibrant green accent.
+ * RiseCoders — Luxury Dark Theme
+ * Deep purple-black backgrounds, luxury gold (#D4A853) accent.
  * MUI handles component styles via Emotion.
  * Tailwind handles layout, spacing, and utility overrides.
  */
 
 @theme {
-  /* ── Brand / Accent (Vibrant Green) ────────────────── */
-  --color-brand-50: #ecfdf5;
-  --color-brand-100: #d1fae5;
-  --color-brand-200: #a7f3d0;
-  --color-brand-300: #6ee7b7;
-  --color-brand-400: #2bd576;
-  --color-brand-500: #22c55e;
-  --color-brand-600: #16a34a;
-  --color-brand-700: #15803d;
-  --color-brand-800: #166534;
-  --color-brand-900: #14532d;
+  /* ── Brand / Accent (Luxury Gold) ──────────────────── */
+  --color-brand-50: #fdf8ed;
+  --color-brand-100: #f9edcc;
+  --color-brand-200: #f3da99;
+  --color-brand-300: #ecc566;
+  --color-brand-400: #D4A853;
+  --color-brand-500: #c49a3d;
+  --color-brand-600: #a47d2e;
+  --color-brand-700: #836325;
+  --color-brand-800: #6b4f1f;
+  --color-brand-900: #563f19;
 
   /* ── Surfaces (deep dark purple-black, portfolio-style) */
   --color-surface-0: #0e0d13;
@@ -40,7 +39,7 @@
   --color-neutral-950: #ffffff;
 
   /* ── Semantic ─────────────────────────────────────── */
-  --color-success: #2bd576;
+  --color-success: #34d399;
   --color-warning: #fbbf24;
   --color-error: #f87171;
   --color-info: #60a5fa;

@@ -34,8 +34,8 @@ export default function TopicPage() {
       >
         {topicLabel}
       </Typography>
-      <Typography variant="body1" sx={{ color: colors.neutral[600], maxWidth: 600 }}>
-        Content for <strong style={{ color: colors.neutral[900] }}>{topicLabel}</strong> will appear
+      <Typography variant="body1" sx={{ color: 'text.secondary', maxWidth: 600 }}>
+        Content for <Box component="strong" sx={{ color: 'text.primary' }}>{topicLabel}</Box> will appear
         here. This page is ready for feature-specific content to be plugged in.
       </Typography>
     </Box>

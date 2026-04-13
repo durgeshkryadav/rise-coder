@@ -1,51 +1,51 @@
 /**
  * RiseCoders — Design Tokens (JS)
- * Single source of truth. Portfolio dark theme from durgesh-yadav.
- * Deep purple-black backgrounds, vibrant green (#2bd576) accent.
+ * Single source of truth. Portfolio dark theme.
+ * Deep purple-black backgrounds, luxury gold (#D4A853) accent.
  */
 
 export const colors = {
-  // Accent — Vibrant Green (from --btn-highlight: #2bd576)
+  // Accent — Luxury Gold / Amber
   brand: {
-    50: '#ecfdf5',
-    100: '#d1fae5',
-    200: '#a7f3d0',
-    300: '#6ee7b7',
-    400: '#2bd576',    // --btn-highlight (primary accent)
-    500: '#22c55e',
-    600: '#16a34a',
-    700: '#15803d',
-    800: '#166534',
-    900: '#14532d',
+    50: '#fdf8ed',
+    100: '#f9edcc',
+    200: '#f3da99',
+    300: '#ecc566',
+    400: '#D4A853',    // primary gold accent
+    500: '#c49a3d',
+    600: '#a47d2e',
+    700: '#836325',
+    800: '#6b4f1f',
+    900: '#563f19',
   },
   // Surfaces — deep dark purple-black (from --bg-primary: #14131a)
   surface: {
     0: '#0e0d13',     // deepest background
-    50: '#14131a',    // app background (--bg-primary)
-    100: '#1c1b23',   // sidebar / panels (--card-primary)
-    150: '#1c1b23',   // card background (--card-primary)
+    50: '#14131a',    // app background
+    100: '#1c1b23',   // sidebar / panels
+    150: '#1c1b23',   // card background
     200: '#24232c',   // card hover / input bg
     300: '#2e2d37',   // elevated hover
   },
-  // Borders & muted text (from portfolio CSS vars)
+  // Borders & muted text
   neutral: {
     300: '#2a2933',   // subtle borders
-    400: '#3a3942',   // borders (--btn-primary)
-    500: '#4f4f52',   // muted text (--text-info)
-    600: '#79787f',   // secondary text (--text-secondary)
-    700: '#8b8a91',   // primary text (--text-primary)
+    400: '#3a3942',   // borders
+    500: '#4f4f52',   // muted text
+    600: '#79787f',   // secondary text
+    700: '#8b8a91',   // primary text
     800: '#b0afb5',   // bright text
     900: '#d4d3d8',   // headline text
-    950: '#ffffff',   // white text (--text-highlight)
+    950: '#ffffff',   // white text
   },
   // Semantic
   semantic: {
-    success: '#2bd576',   // matches brand accent
-    warning: '#fbbf24',   // amber-400
-    error: '#f87171',     // red-400
-    info: '#60a5fa',      // blue-400
+    success: '#34d399',
+    warning: '#fbbf24',
+    error: '#f87171',
+    info: '#60a5fa',
   },
-  // Tech card category accents (from TechStack.tsx)
+  // Tech card category accents
   category: {
     frontend: '#4f91f2',
     backend: '#f37c36',

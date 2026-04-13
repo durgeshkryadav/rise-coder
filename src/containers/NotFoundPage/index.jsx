@@ -39,7 +39,7 @@ export default function NotFoundPage() {
 
         <H1 sx={{ fontSize: '1.5rem', mb: 1 }}>Page not found</H1>
 
-        <Typography variant="body1" sx={{ color: colors.neutral[500], mb: 4 }}>
+        <Typography variant="body1" sx={{ color: 'text.secondary', mb: 4 }}>
           The page you're looking for doesn't exist or has been moved.
         </Typography>
 

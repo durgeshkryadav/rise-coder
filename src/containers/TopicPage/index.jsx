@@ -33,8 +33,8 @@ export default function TopicPage() {
 
       <H3 sx={{ textTransform: 'capitalize' }}>{topicLabel}</H3>
 
-      <Typography variant="body1" sx={{ color: colors.neutral[600], maxWidth: 600, lineHeight: 1.8 }}>
-        Content for <strong style={{ color: colors.neutral[800] }}>{topicLabel}</strong> will appear
+      <Typography variant="body1" sx={{ color: 'text.secondary', maxWidth: 600, lineHeight: 1.8 }}>
+        Content for <Box component="strong" sx={{ color: 'text.primary' }}>{topicLabel}</Box> will appear
         here. This container is ready for feature-specific content, queries, and state.
       </Typography>
 
@@ -44,19 +44,20 @@ export default function TopicPage() {
           mt: 4,
           p: 4,
           borderRadius: 3,
-          backgroundColor: colors.surface[150],
-          border: `1px solid ${colors.neutral[300]}`,
+          bgcolor: 'background.paper',
+          border: '1px solid',
+          borderColor: 'divider',
           minHeight: 200,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-        <Typography variant="body2" sx={{ color: colors.neutral[500] }}>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           Content module for{' '}
-          <span style={{ color: colors.neutral[700], fontWeight: 600, textTransform: 'capitalize' }}>
+          <Box component="span" sx={{ color: 'text.primary', fontWeight: 600, textTransform: 'capitalize' }}>
             {sectionLabel} → {topicLabel}
-          </span>
+          </Box>
         </Typography>
       </Box>
     </article>
