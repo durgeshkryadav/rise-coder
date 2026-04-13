@@ -1,45 +1,46 @@
 @import "tailwindcss";
 
 /*
- * RiseCoders — Portfolio-Inspired Dark Theme
- * Dark blue-gray backgrounds, teal/emerald accents.
+ * RiseCoders — Portfolio Dark Theme
+ * Exact theme from durgesh-yadav portfolio.
+ * Deep dark purple-black backgrounds, vibrant green accent.
  * MUI handles component styles via Emotion.
  * Tailwind handles layout, spacing, and utility overrides.
  */
 
 @theme {
-  /* ── Brand / Accent (Teal) ────────────────────────── */
-  --color-brand-50: #f0fdfa;
-  --color-brand-100: #ccfbf1;
-  --color-brand-200: #99f6e4;
-  --color-brand-300: #5eead4;
-  --color-brand-400: #2dd4bf;
-  --color-brand-500: #14b8a6;
-  --color-brand-600: #0d9488;
-  --color-brand-700: #0f766e;
-  --color-brand-800: #115e59;
-  --color-brand-900: #134e4a;
+  /* ── Brand / Accent (Vibrant Green) ────────────────── */
+  --color-brand-50: #ecfdf5;
+  --color-brand-100: #d1fae5;
+  --color-brand-200: #a7f3d0;
+  --color-brand-300: #6ee7b7;
+  --color-brand-400: #2bd576;
+  --color-brand-500: #22c55e;
+  --color-brand-600: #16a34a;
+  --color-brand-700: #15803d;
+  --color-brand-800: #166534;
+  --color-brand-900: #14532d;
 
-  /* ── Surfaces (dark blue-gray, portfolio-style) ───── */
-  --color-surface-0: #0a0c10;
-  --color-surface-50: #0d1117;
-  --color-surface-100: #111720;
-  --color-surface-150: #161b27;
-  --color-surface-200: #1c2333;
-  --color-surface-300: #242d3d;
+  /* ── Surfaces (deep dark purple-black, portfolio-style) */
+  --color-surface-0: #0e0d13;
+  --color-surface-50: #14131a;
+  --color-surface-100: #1c1b23;
+  --color-surface-150: #1c1b23;
+  --color-surface-200: #24232c;
+  --color-surface-300: #2e2d37;
 
   /* ── Neutrals (borders → text scale) ──────────────── */
-  --color-neutral-300: #1e293b;
-  --color-neutral-400: #2d3a4f;
-  --color-neutral-500: #64748b;
-  --color-neutral-600: #94a3b8;
-  --color-neutral-700: #cbd5e1;
-  --color-neutral-800: #e2e8f0;
-  --color-neutral-900: #f1f5f9;
-  --color-neutral-950: #f8fafc;
+  --color-neutral-300: #2a2933;
+  --color-neutral-400: #3a3942;
+  --color-neutral-500: #4f4f52;
+  --color-neutral-600: #79787f;
+  --color-neutral-700: #8b8a91;
+  --color-neutral-800: #b0afb5;
+  --color-neutral-900: #d4d3d8;
+  --color-neutral-950: #ffffff;
 
   /* ── Semantic ─────────────────────────────────────── */
-  --color-success: #34d399;
+  --color-success: #2bd576;
   --color-warning: #fbbf24;
   --color-error: #f87171;
   --color-info: #60a5fa;
@@ -96,27 +97,37 @@ body.fontLoaded {
 
 /* ── Selection ────────────────────────────────────── */
 ::selection {
-  background-color: var(--color-brand-600);
-  color: #fff;
+  background-color: var(--color-brand-400);
+  color: #14131a;
 }
 
-/* ── Scrollbar (premium dark feel) ────────────────── */
+/* ── Scrollbar (portfolio-style dark) ─────────────── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-neutral-400);
-  border-radius: 3px;
+  background: hsla(0, 0%, 0%, 0.4);
+  border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-neutral-500);
+  background: hsla(0, 0%, 0%, 0.5);
 }
 
 /* ── Focus ring (accessibility) ───────────────────── */
 :focus-visible {
-  outline: 2px solid var(--color-brand-500);
+  outline: 2px solid var(--color-brand-400);
   outline-offset: 2px;
+}
+
+/* ── Progress bar utility (from portfolio) ────────── */
+.progress-bar {
+  width: 100%;
+  height: 7px;
+  background-color: var(--color-neutral-400);
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 8px 8px;
 }

@@ -3,33 +3,33 @@ import { colors, typography, spacing, motion, layout } from './tokens';
 
 /**
  * Light-mode surface & neutral overrides.
- * Brand + semantic colours stay the same.
+ * Inverted from the portfolio dark palette for light mode support.
  */
 const lightColors = {
   surface: {
     0: '#ffffff',
-    50: '#f8fafc',
-    100: '#f1f5f9',
-    150: '#e2e8f0',
-    200: '#cbd5e1',
-    300: '#94a3b8',
+    50: '#f8f8fa',
+    100: '#f0f0f3',
+    150: '#e8e7ec',
+    200: '#dddce2',
+    300: '#c8c7cf',
   },
   neutral: {
-    300: '#e2e8f0',
-    400: '#cbd5e1',
-    500: '#94a3b8',
-    600: '#64748b',
-    700: '#475569',
-    800: '#334155',
-    900: '#1e293b',
-    950: '#0f172a',
+    300: '#e2e1e8',
+    400: '#c8c7cf',
+    500: '#8b8a91',
+    600: '#79787f',
+    700: '#4f4f52',
+    800: '#3a3942',
+    900: '#24232c',
+    950: '#14131a',
   },
 };
 
 /**
  * RiseCoders — MUI Theme Factory
+ * Portfolio dark theme: deep purple-black (#14131a) + vibrant green (#2bd576).
  * Supports 'dark' (default) and 'light' modes.
- * Built from design tokens.
  */
 export function createAppTheme(mode = 'dark') {
   const isDark = mode === 'dark';
@@ -40,10 +40,10 @@ export function createAppTheme(mode = 'dark') {
     palette: {
       mode,
       primary: {
-        main: colors.brand[500],
-        light: colors.brand[400],
-        dark: colors.brand[700],
-        contrastText: '#ffffff',
+        main: colors.brand[400],     // #2bd576 vibrant green
+        light: colors.brand[300],
+        dark: colors.brand[600],
+        contrastText: '#14131a',
       },
       secondary: {
         main: neutral[600],
@@ -51,8 +51,8 @@ export function createAppTheme(mode = 'dark') {
         dark: neutral[500],
       },
       background: {
-        default: surface[50],
-        paper: surface[100],
+        default: surface[50],        // #14131a in dark mode
+        paper: surface[100],         // #1c1b23 in dark mode
       },
       text: {
         primary: neutral[900],
@@ -121,17 +121,18 @@ export function createAppTheme(mode = 'dark') {
             transition: `all ${motion.duration.fast} ${motion.easing.default}`,
           },
           contained: {
-            background: `linear-gradient(135deg, ${colors.brand[600]}, ${colors.brand[500]})`,
+            backgroundColor: colors.brand[400],
+            color: '#14131a',
             '&:hover': {
-              background: `linear-gradient(135deg, ${colors.brand[500]}, ${colors.brand[400]})`,
+              backgroundColor: colors.brand[300],
             },
           },
           outlined: {
             borderColor: neutral[400],
             color: neutral[700],
             '&:hover': {
-              borderColor: colors.brand[500],
-              backgroundColor: `${colors.brand[500]}10`,
+              borderColor: colors.brand[400],
+              backgroundColor: `${colors.brand[400]}10`,
             },
           },
         },
@@ -156,10 +157,10 @@ export function createAppTheme(mode = 'dark') {
               backgroundColor: surface[200],
             },
             '&.Mui-selected': {
-              backgroundColor: `${colors.brand[600]}18`,
+              backgroundColor: `${colors.brand[400]}18`,
               color: colors.brand[400],
               '&:hover': {
-                backgroundColor: `${colors.brand[600]}24`,
+                backgroundColor: `${colors.brand[400]}24`,
               },
             },
           },

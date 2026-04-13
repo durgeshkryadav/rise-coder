@@ -1,50 +1,56 @@
 /**
  * RiseCoders — Design Tokens (JS)
- * Single source of truth. Portfolio-inspired dark theme.
- * Dark blue-gray backgrounds, teal/emerald accents.
- * Inspired by dev-portfolio dark UI.
+ * Single source of truth. Portfolio dark theme from durgesh-yadav.
+ * Deep purple-black backgrounds, vibrant green (#2bd576) accent.
  */
 
 export const colors = {
-  // Accent — Teal / Emerald
+  // Accent — Vibrant Green (from --btn-highlight: #2bd576)
   brand: {
-    50: '#f0fdfa',
-    100: '#ccfbf1',
-    200: '#99f6e4',
-    300: '#5eead4',
-    400: '#2dd4bf',
-    500: '#14b8a6',
-    600: '#0d9488',
-    700: '#0f766e',
-    800: '#115e59',
-    900: '#134e4a',
+    50: '#ecfdf5',
+    100: '#d1fae5',
+    200: '#a7f3d0',
+    300: '#6ee7b7',
+    400: '#2bd576',    // --btn-highlight (primary accent)
+    500: '#22c55e',
+    600: '#16a34a',
+    700: '#15803d',
+    800: '#166534',
+    900: '#14532d',
   },
-  // Surfaces — dark blue-gray, portfolio-style
+  // Surfaces — deep dark purple-black (from --bg-primary: #14131a)
   surface: {
-    0: '#0a0c10',     // deepest background
-    50: '#0d1117',    // app background
-    100: '#111720',   // sidebar / elevated panels
-    150: '#161b27',   // card background
-    200: '#1c2333',   // card hover / input bg
-    300: '#242d3d',   // elevated hover
+    0: '#0e0d13',     // deepest background
+    50: '#14131a',    // app background (--bg-primary)
+    100: '#1c1b23',   // sidebar / panels (--card-primary)
+    150: '#1c1b23',   // card background (--card-primary)
+    200: '#24232c',   // card hover / input bg
+    300: '#2e2d37',   // elevated hover
   },
-  // Borders & muted text
+  // Borders & muted text (from portfolio CSS vars)
   neutral: {
-    300: '#1e293b',   // subtle borders
-    400: '#2d3a4f',   // borders
-    500: '#64748b',   // muted text
-    600: '#94a3b8',   // secondary text
-    700: '#cbd5e1',   // primary text
-    800: '#e2e8f0',   // bright text
-    900: '#f1f5f9',   // headline text
-    950: '#f8fafc',   // white text
+    300: '#2a2933',   // subtle borders
+    400: '#3a3942',   // borders (--btn-primary)
+    500: '#4f4f52',   // muted text (--text-info)
+    600: '#79787f',   // secondary text (--text-secondary)
+    700: '#8b8a91',   // primary text (--text-primary)
+    800: '#b0afb5',   // bright text
+    900: '#d4d3d8',   // headline text
+    950: '#ffffff',   // white text (--text-highlight)
   },
   // Semantic
   semantic: {
-    success: '#34d399',   // emerald-400
+    success: '#2bd576',   // matches brand accent
     warning: '#fbbf24',   // amber-400
     error: '#f87171',     // red-400
     info: '#60a5fa',      // blue-400
+  },
+  // Tech card category accents (from TechStack.tsx)
+  category: {
+    frontend: '#4f91f2',
+    backend: '#f37c36',
+    database: '#e0558a',
+    devops: '#10c0a2',
   },
 };
 

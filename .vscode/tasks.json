@@ -9,23 +9,27 @@
     }
   ],
   "tasks": [
+        {
+      "label": "npm run dev",
+      "type": "shell",
+      "command": "npm run dev",
+    },
     {
       "label": "git add",
       "type": "shell",
-      "command": "git add .",
+      "command": "git",
+      "args": ["add", "."],
       "problemMatcher": []
     },
     {
       "label": "git commit",
       "type": "shell",
-      "command": "git commit -m \"${input:commitMessage}\"",
-      "problemMatcher": []
-    },
-    {
-      "label": "npm run dev",
-      "type": "shell",
-      "command": "npm run dev",
-      "isBackground": true,
+      "command": "git",
+      "args": [
+        "commit",
+        "-m",
+        "${input:commitMessage}"
+      ],
       "problemMatcher": []
     }
   ]
