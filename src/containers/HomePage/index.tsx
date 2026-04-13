@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -7,92 +7,70 @@ import navigation from '@/config/navigation';
 import { colors } from '@/design-system/tokens';
 
 /**
- * HomePage — Categories + sub-topic cards layout.
- * Matches reference design: large icon category cards + accent-bordered sub-cards.
+ * HomePage — Each section is a full-width banner row
+ * with its sub-topic cards inside.
  */
 export default function HomePage() {
   const navigate = useNavigate();
+  const { section } = useParams<{ section?: string }>();
+
+  const visibleSections = section
+    ? navigation.filter((s) => s.basePath === `/${section}`)
+    : navigation;
 
   return (
     <article>
-      {/* ── Categories row ── */}
-      <Typography variant="h5" sx={{ fontWeight: 700, color: 'text.primary', mb: 3 }}>
-        Categories
-      </Typography>
-
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
-          gap: 2,
-          mb: 6,
-        }}
-      >
-        {navigation.map((section) => (
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+        {visibleSections.map((section) => (
           <Box
             key={section.id}
-            onClick={() => navigate(section.basePath)}
             sx={{
+              width: '100%',
+              minHeight: 220,
+              bgcolor: `${section.color}0d`,
+              border: '1px solid',
+              borderColor: `${section.color}30`,
               borderRadius: 3,
               overflow: 'hidden',
-              bgcolor: colors.surface[100],
-              border: '1px solid',
-              borderColor: 'divider',
-              cursor: 'pointer',
-              transition: 'transform 200ms ease, box-shadow 200ms ease',
-              '&:hover': {
-                transform: 'translateY(-3px)',
-                boxShadow: `0 8px 24px ${section.color}30`,
-              },
             }}
           >
-            {/* Colored icon area */}
+            {/* Section header bar */}
             <Box
+              onClick={() => navigate(section.basePath)}
               sx={{
-                bgcolor: `${section.color}22`,
+                px: 3,
+                py: 2,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                py: 4,
+                gap: 1.5,
+                cursor: 'pointer',
                 borderBottom: '1px solid',
                 borderColor: `${section.color}30`,
+                bgcolor: `${section.color}18`,
+                '&:hover': { bgcolor: `${section.color}28` },
+                transition: 'background-color 200ms ease',
               }}
             >
               <FontAwesomeIcon
                 icon={section.icon}
-                style={{ fontSize: '2.5rem', color: section.color }}
+                style={{ fontSize: '1.3rem', color: section.color }}
               />
-            </Box>
-            {/* Label */}
-            <Box sx={{ px: 2, py: 1.5, textAlign: 'center' }}>
               <Typography
-                variant="body2"
-                sx={{ fontWeight: 600, color: 'text.primary' }}
+                variant="h6"
+                sx={{ fontWeight: 700, color: section.color }}
               >
                 {section.label}
               </Typography>
             </Box>
-          </Box>
-        ))}
-      </Box>
 
-      {/* ── Per-section sub-cards ── */}
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
-        {navigation.map((section) => (
-          <Box key={section.id}>
-            {/* Section heading */}
-            <Typography
-              variant="h6"
-              sx={{ fontWeight: 700, color: 'text.primary', mb: 2 }}
-            >
-              {section.label}
-            </Typography>
-
-            {/* Sub-topic cards grid */}
+            {/* Sub-topic cards inside banner */}
             <Box
               sx={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+                px: 3,
+                py: 3,
+                display: 'flex',
+                flexWrap: 'wrap',
                 gap: 2,
               }}
             >
@@ -100,16 +78,19 @@ export default function HomePage() {
                 <Box
                   key={child.id}
                   sx={{
-                    bgcolor: colors.surface[100],
+                    bgcolor: colors.surface[200],
                     border: '1px solid',
                     borderColor: 'divider',
                     borderRadius: 2,
                     overflow: 'hidden',
                     display: 'flex',
+                    minWidth: 220,
+                    flex: '1 1 220px',
+                    maxWidth: 320,
                     transition: 'transform 200ms ease, box-shadow 200ms ease',
                     '&:hover': {
                       transform: 'translateY(-2px)',
-                      boxShadow: `0 6px 20px rgba(0,0,0,0.3)`,
+                      boxShadow: `0 6px 20px rgba(0,0,0,0.35)`,
                       borderColor: section.color,
                     },
                   }}
@@ -120,11 +101,10 @@ export default function HomePage() {
                       width: 4,
                       minWidth: 4,
                       bgcolor: section.color,
-                      borderRadius: '0 0 0 0',
                     }}
                   />
                   {/* Card content */}
-                  <Box sx={{ p: 2, flex: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
+                  <Box sx={{ p: 2, flex: 1, display: 'flex', flexDirection: 'column', gap: 1, alignItems: 'center', textAlign: 'center' }}>
                     <Typography
                       variant="body1"
                       sx={{ fontWeight: 700, color: 'text.primary', lineHeight: 1.3 }}
@@ -137,8 +117,7 @@ export default function HomePage() {
                     >
                       {child.desc}
                     </Typography>
-                    {/* Action buttons */}
-                    <Box sx={{ display: 'flex', gap: 1, mt: 1 }}>
+                    <Box sx={{ display: 'flex', gap: 1, mt: 1, justifyContent: 'center' }}>
                       <Button
                         size="small"
                         onClick={() => navigate(child.path)}
