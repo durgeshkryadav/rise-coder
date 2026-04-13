@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import A from '@/components/A';
-import { colors } from '@/design-system/tokens';
 
 /**
  * Footer — App footer.
@@ -14,7 +13,8 @@ export default function Footer() {
       sx={{
         px: 3,
         py: 2.5,
-        borderTop: `1px solid ${colors.neutral[300]}`,
+        borderTop: '1px solid',
+        borderColor: 'divider',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',

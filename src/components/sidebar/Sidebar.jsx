@@ -9,7 +9,7 @@ import { colors, layout } from '@/design-system/tokens';
 
 /**
  * Sidebar — Left navigation panel.
- * Fixed position, dark surface, premium feel.
+ * Fixed position, premium feel. Theme-aware.
  */
 function Sidebar() {
   return (
@@ -23,8 +23,9 @@ function Sidebar() {
         left: 0,
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: colors.surface[100],
-        borderRight: `1px solid ${colors.neutral[300]}`,
+        bgcolor: 'background.paper',
+        borderRight: '1px solid',
+        borderColor: 'divider',
         zIndex: 1200,
       }}
     >
@@ -49,13 +50,13 @@ function Sidebar() {
         </Box>
         <Typography
           variant="h6"
-          sx={{ fontWeight: 700, color: colors.neutral[950], letterSpacing: '-0.02em' }}
+          sx={{ fontWeight: 700, color: 'text.primary', letterSpacing: '-0.02em' }}
         >
           RiseCoders
         </Typography>
       </Box>
 
-      <Divider sx={{ borderColor: colors.neutral[300] }} />
+      <Divider />
 
       {/* Navigation */}
       <Box
@@ -73,9 +74,9 @@ function Sidebar() {
       </Box>
 
       {/* Footer */}
-      <Divider sx={{ borderColor: colors.neutral[300] }} />
+      <Divider />
       <Box sx={{ px: 3, py: 2 }}>
-        <Typography variant="caption" sx={{ color: colors.neutral[500] }}>
+        <Typography variant="caption" sx={{ color: 'text.disabled' }}>
           © 2026 RiseCoders
         </Typography>
       </Box>

@@ -38,7 +38,7 @@ function NavSection({ section }) {
         selected={isActive && !open}
         sx={{ mx: 1, mb: 0.5 }}
       >
-        <ListItemIcon sx={{ minWidth: 36, color: isActive ? colors.brand[400] : colors.neutral[500] }}>
+        <ListItemIcon sx={{ minWidth: 36, color: isActive ? 'primary.main' : 'text.disabled' }}>
           <FontAwesomeIcon icon={section.icon} style={{ fontSize: '1rem' }} />
         </ListItemIcon>
         <ListItemText
@@ -46,7 +46,7 @@ function NavSection({ section }) {
           primaryTypographyProps={{
             fontSize: '0.875rem',
             fontWeight: isActive ? 600 : 500,
-            color: isActive ? colors.brand[400] : colors.neutral[700],
+            color: isActive ? 'primary.main' : 'text.primary',
           }}
         />
         <FontAwesomeIcon
@@ -76,7 +76,7 @@ function NavSection({ section }) {
                   primaryTypographyProps={{
                     fontSize: '0.8125rem',
                     fontWeight: childActive ? 600 : 400,
-                    color: childActive ? colors.brand[400] : colors.neutral[600],
+                    color: childActive ? 'primary.main' : 'text.secondary',
                   }}
                 />
               </ListItemButton>

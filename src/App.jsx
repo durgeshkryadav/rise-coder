@@ -1,15 +1,13 @@
+import { useMemo } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import theme from '@/design-system/theme';
+import { createAppTheme } from '@/design-system/theme';
+import { AuthProvider } from '@/contexts/AuthContext';
+import { ThemeModeProvider, useThemeMode } from '@/contexts/ThemeContext';
 import router from './router';
 
-/**
- * App entry — Provider stack.
- * Pattern from react-boilerplate: Provider > ThemeProvider > Router.
- * Suspense is handled per-route by the loadable utility.
- */
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -20,13 +18,33 @@ const queryClient = new QueryClient({
   },
 });
 
+/**
+ * Inner app — consumes ThemeMode context to build MUI theme.
+ */
+function ThemedApp() {
+  const { mode } = useThemeMode();
+  const theme = useMemo(() => createAppTheme(mode), [mode]);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </ThemeProvider>
+  );
+}
+
+/**
+ * App entry — Provider stack.
+ * QueryClient > ThemeMode > MUI Theme > Auth > Router.
+ */
 export default function AppEntry() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <RouterProvider router={router} />
-      </ThemeProvider>
+      <ThemeModeProvider>
+        <ThemedApp />
+      </ThemeModeProvider>
     </QueryClientProvider>
   );
 }

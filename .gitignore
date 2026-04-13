@@ -4,7 +4,13 @@ build
 node_modules
 stats.json
 
+# Environment variables
+.env
+.env.local
+.env.*.local
+
 # Cruft
 .DS_Store
 npm-debug.log
 .idea
+workspace

@@ -22,12 +22,6 @@
       "problemMatcher": []
     },
     {
-      "label": "git add & commit",
-      "type": "shell",
-      "command": "git add . && git commit -m \"${input:commitMessage}\"",
-      "problemMatcher": []
-    },
-    {
       "label": "npm run dev",
       "type": "shell",
       "command": "npm run dev",
