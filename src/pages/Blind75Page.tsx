@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Table from '@mui/material/Table';
@@ -27,65 +27,75 @@ const difficultyColor: Record<string, string> = {
   Hard: '#ff375f',
 };
 
-export default function Blind75Page() {
-  const [progressMap, setProgressMap] = useState<Record<string, ProblemProgress>>({});
-  const [loading, setLoading] = useState(true);
+/* ─── localStorage helpers ────────────────────────────── */
+const STORAGE_KEY = 'blind75_progress';
 
-  /* ── Fetch saved progress on mount ──────────────────── */
+function loadLocal(): Record<string, ProblemProgress> {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveLocal(map: Record<string, ProblemProgress>) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+  } catch { /* quota exceeded — ignore */ }
+}
+
+export default function Blind75Page() {
+  const [progressMap, setProgressMap] = useState<Record<string, ProblemProgress>>(loadLocal);
+  const [loading, setLoading] = useState(true);
+  const mapRef = useRef(progressMap);
+  mapRef.current = progressMap;
+
+  /* ── Merge remote progress on mount (Supabase wins for newer data) */
   useEffect(() => {
     ProgressService.fetchAll()
       .then((rows) => {
-        const map: Record<string, ProblemProgress> = {};
-        rows.forEach((r) => { map[r.problem_id] = r; });
-        setProgressMap(map);
+        if (rows.length === 0) return;
+        const remote: Record<string, ProblemProgress> = {};
+        rows.forEach((r) => { remote[r.problem_id] = r; });
+        setProgressMap((prev) => {
+          const merged = { ...prev, ...remote };
+          saveLocal(merged);
+          return merged;
+        });
       })
-      .catch(() => {
-        // silently fail — user just won't see saved state
-      })
+      .catch(() => { /* Supabase unavailable — local data still works */ })
       .finally(() => setLoading(false));
   }, []);
 
+  /* ── Helper: update map, persist locally, fire-and-forget to Supabase */
+  const updateProgress = useCallback(
+    (problemId: string, patch: Partial<ProblemProgress>) => {
+      setProgressMap((prev) => {
+        const existing = prev[problemId] ?? { problem_id: problemId, completed: false, starred: false };
+        const updated = { ...existing, ...patch, problem_id: problemId };
+        const next = { ...prev, [problemId]: updated };
+        saveLocal(next);
+        return next;
+      });
+    },
+    [],
+  );
+
   /* ── Toggle completed ───────────────────────────────── */
-  const handleToggleCompleted = useCallback(async (problemId: string) => {
-    const current = progressMap[problemId]?.completed ?? false;
-    const next = !current;
-
-    // optimistic UI update
-    setProgressMap((prev) => ({
-      ...prev,
-      [problemId]: { ...prev[problemId], problem_id: problemId, completed: next, starred: prev[problemId]?.starred ?? false },
-    }));
-
-    try {
-      await ProgressService.toggleCompleted(problemId, next);
-    } catch {
-      // rollback
-      setProgressMap((prev) => ({
-        ...prev,
-        [problemId]: { ...prev[problemId], problem_id: problemId, completed: current, starred: prev[problemId]?.starred ?? false },
-      }));
-    }
-  }, [progressMap]);
+  const handleToggleCompleted = useCallback((problemId: string) => {
+    const next = !(mapRef.current[problemId]?.completed ?? false);
+    updateProgress(problemId, { completed: next });
+    // fire-and-forget remote sync — no rollback
+    ProgressService.toggleCompleted(problemId, next).catch(() => {});
+  }, [updateProgress]);
 
   /* ── Toggle starred ─────────────────────────────────── */
-  const handleToggleStar = useCallback(async (problemId: string) => {
-    const current = progressMap[problemId]?.starred ?? false;
-    const next = !current;
-
-    setProgressMap((prev) => ({
-      ...prev,
-      [problemId]: { ...prev[problemId], problem_id: problemId, starred: next, completed: prev[problemId]?.completed ?? false },
-    }));
-
-    try {
-      await ProgressService.toggleStarred(problemId, next);
-    } catch {
-      setProgressMap((prev) => ({
-        ...prev,
-        [problemId]: { ...prev[problemId], problem_id: problemId, starred: current, completed: prev[problemId]?.completed ?? false },
-      }));
-    }
-  }, [progressMap]);
+  const handleToggleStar = useCallback((problemId: string) => {
+    const next = !(mapRef.current[problemId]?.starred ?? false);
+    updateProgress(problemId, { starred: next });
+    ProgressService.toggleStarred(problemId, next).catch(() => {});
+  }, [updateProgress]);
 
   /* ── Compute totals ─────────────────────────────────── */
   const allProblems = blind75Data.flatMap((w) => w.problems);
