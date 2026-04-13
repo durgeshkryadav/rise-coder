@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "commitMessage",
+      "type": "promptString",
+      "description": "Enter commit message",
+      "default": "update"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "git add",
+      "type": "shell",
+      "command": "git add .",
+      "problemMatcher": []
+    },
+    {
+      "label": "git commit",
+      "type": "shell",
+      "command": "git commit -m \"${input:commitMessage}\"",
+      "problemMatcher": []
+    },
+    {
+      "label": "git add & commit",
+      "type": "shell",
+      "command": "git add . && git commit -m \"${input:commitMessage}\"",
+      "problemMatcher": []
+    },
+    {
+      "label": "npm run dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/*
+ * RiseCoders — Portfolio-Inspired Dark Theme
+ * Dark blue-gray backgrounds, teal/emerald accents.
+ * MUI handles component styles via Emotion.
+ * Tailwind handles layout, spacing, and utility overrides.
+ */
+
+@theme {
+  /* ── Brand / Accent (Teal) ────────────────────────── */
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-300: #5eead4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+
+  /* ── Surfaces (dark blue-gray, portfolio-style) ───── */
+  --color-surface-0: #0a0c10;
+  --color-surface-50: #0d1117;
+  --color-surface-100: #111720;
+  --color-surface-150: #161b27;
+  --color-surface-200: #1c2333;
+  --color-surface-300: #242d3d;
+
+  /* ── Neutrals (borders → text scale) ──────────────── */
+  --color-neutral-300: #1e293b;
+  --color-neutral-400: #2d3a4f;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #94a3b8;
+  --color-neutral-700: #cbd5e1;
+  --color-neutral-800: #e2e8f0;
+  --color-neutral-900: #f1f5f9;
+  --color-neutral-950: #f8fafc;
+
+  /* ── Semantic ─────────────────────────────────────── */
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+  --color-info: #60a5fa;
+
+  /* ── Typography ───────────────────────────────────── */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Spacing Rhythm (4px base) ────────────────────── */
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+
+  /* ── Layout ───────────────────────────────────────── */
+  --sidebar-width: 272px;
+  --sidebar-collapsed-width: 64px;
+}
+
+/* ── Base Resets ───────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-surface-50);
+  color: var(--color-neutral-700);
+  line-height: 1.6;
+}
+
+body.fontLoaded {
+  font-family: var(--font-sans);
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+/* ── Selection ────────────────────────────────────── */
+::selection {
+  background-color: var(--color-brand-600);
+  color: #fff;
+}
+
+/* ── Scrollbar (premium dark feel) ────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-400);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-500);
+}
+
+/* ── Focus ring (accessibility) ───────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+}
