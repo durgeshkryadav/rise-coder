@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Table from '@mui/material/Table';
@@ -26,6 +27,9 @@ const difficultyColor: Record<string, string> = {
   Medium: '#ffc01e',
   Hard: '#ff375f',
 };
+const problem3DRoutes: Record<string, string> = {
+  'b75-3': '/dsa/blind-75/two-sum-3d',
+};
 
 /* ─── localStorage helpers ────────────────────────────── */
 const STORAGE_KEY = 'blind75_progress';
@@ -46,6 +50,7 @@ function saveLocal(map: Record<string, ProblemProgress>) {
 }
 
 export default function Blind75Page() {
+  const navigate = useNavigate();
   const [progressMap, setProgressMap] = useState<Record<string, ProblemProgress>>(loadLocal);
   const [loading, setLoading] = useState(true);
   const mapRef = useRef(progressMap);
@@ -265,7 +270,15 @@ export default function Blind75Page() {
 
                         {/* 3D Solution */}
                         <TableCell align="center">
-                          <IconButton size="small" sx={{ color: colors.neutral[600] }}>
+                          <IconButton
+                            size="small"
+                            sx={{ color: colors.neutral[600] }}
+                            disabled={!problem3DRoutes[problem.id]}
+                            onClick={() => {
+                              const route = problem3DRoutes[problem.id];
+                              if (route) navigate(route);
+                            }}
+                          >
                             <ViewInArIcon fontSize="small" />
                           </IconButton>
                         </TableCell>

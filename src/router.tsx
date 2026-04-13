@@ -10,6 +10,9 @@ import LoginPage from '@/pages/auth/LoginPage';
 import SignupPage from '@/pages/auth/SignupPage';
 import ForgotPasswordPage from '@/pages/auth/ForgotPasswordPage';
 import ResetPasswordPage from '@/pages/auth/ResetPasswordPage';
+import Loadable from '@/utils/loadable';
+
+const TwoSum3DPage = Loadable(() => import('@/features/visualizer3d/pages/TwoSum3DPage'));
 
 /**
  * Router — Uses container Loadable pattern from react-boilerplate.
@@ -21,6 +24,16 @@ const router = createBrowserRouter([
   { path: '/auth/signup', element: <SignupPage /> },
   { path: '/auth/forgot-password', element: <ForgotPasswordPage /> },
   { path: '/auth/reset-password', element: <ResetPasswordPage /> },
+
+  // Protected full-screen routes (no sidebar/header)
+  {
+    path: '/dsa/blind-75/two-sum-3d',
+    element: (
+      <ProtectedRoute>
+        <TwoSum3DPage />
+      </ProtectedRoute>
+    ),
+  },
 
   // Protected app routes
   {
