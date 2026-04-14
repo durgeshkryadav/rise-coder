@@ -13,7 +13,7 @@ export function generateTopKFrequentSteps(nums: number[], k: number): GenericSte
     cubeStates: nums.map(() => 'default' as GenericCubeState),
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'FreqMap  { value → count }',
+    hashMapLabel: 'count  (dict)',
     codeLines: [1, 2],
     codeClass: 'active',
   });
@@ -24,7 +24,7 @@ export function generateTopKFrequentSteps(nums: number[], k: number): GenericSte
     cubeStates: nums.map(() => 'default' as GenericCubeState),
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'FreqMap  { value → count }',
+    hashMapLabel: 'count  (dict)',
     codeLines: [3],
     codeClass: 'active',
   });
@@ -49,7 +49,7 @@ export function generateTopKFrequentSteps(nums: number[], k: number): GenericSte
       cubeStates: [...cs],
       pointer: i,
       hashMap: { ...hmObj },
-      hashMapLabel: 'FreqMap  { value → count }',
+      hashMapLabel: 'count  (dict)',
       computation: {
         lines: [`Phase 1: Counting`, `freq[${val}] = ${count[val]}`],
       },
@@ -78,7 +78,7 @@ export function generateTopKFrequentSteps(nums: number[], k: number): GenericSte
     cubeStates: nums.map(() => 'processing' as GenericCubeState),
     pointer: -1,
     hashMap: { ...bucketHm },
-    hashMapLabel: 'Buckets  { frequency → [values] }',
+    hashMapLabel: 'buckets  (list of lists)',
     computation: {
       lines: ['Phase 2: Bucket Sort'],
     },
@@ -105,7 +105,7 @@ export function generateTopKFrequentSteps(nums: number[], k: number): GenericSte
     cubeStates: finalCs,
     pointer: -1,
     hashMap: { ...bucketHm },
-    hashMapLabel: 'Buckets  { frequency → [values] }',
+    hashMapLabel: 'buckets  (list of lists)',
     computation: {
       lines: [`Phase 3: Pick top ${k}`],
       resultLine: `Answer: [${result.join(', ')}]`,

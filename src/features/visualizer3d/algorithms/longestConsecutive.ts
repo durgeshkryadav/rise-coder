@@ -13,7 +13,7 @@ export function generateLongestConsecutiveSteps(nums: number[]): GenericStep[] {
     cubeStates: nums.map(() => 'default' as GenericCubeState),
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'HashSet  { values }',
+    hashMapLabel: 'num_set  (set)',
     codeLines: [1, 2],
     codeClass: 'active',
   });
@@ -29,7 +29,7 @@ export function generateLongestConsecutiveSteps(nums: number[]): GenericStep[] {
     cubeStates: nums.map(() => 'in_set' as GenericCubeState),
     pointer: -1,
     hashMap: { ...setHm },
-    hashMapLabel: 'HashSet  { values }',
+    hashMapLabel: 'num_set  (set)',
     computation: {
       lines: [`Build HashSet`, `${numSet.size} unique values`],
     },
@@ -43,7 +43,7 @@ export function generateLongestConsecutiveSteps(nums: number[]): GenericStep[] {
     cubeStates: nums.map(() => 'in_set' as GenericCubeState),
     pointer: -1,
     hashMap: { ...setHm },
-    hashMapLabel: 'HashSet  { values }',
+    hashMapLabel: 'num_set  (set)',
     codeLines: [3, 4],
     codeClass: 'active',
   });
@@ -73,7 +73,7 @@ export function generateLongestConsecutiveSteps(nums: number[]): GenericStep[] {
       cubeStates: [...csCheck],
       pointer: origIdx,
       hashMap: { ...setHm },
-      hashMapLabel: 'HashSet  { values }',
+      hashMapLabel: 'num_set  (set)',
       computation: {
         lines: [
           `Check: ${num}`,
@@ -108,7 +108,7 @@ export function generateLongestConsecutiveSteps(nums: number[]): GenericStep[] {
       cubeStates: [...csSeq],
       pointer: origIdx,
       hashMap: { ...setHm },
-      hashMapLabel: 'HashSet  { values }',
+      hashMapLabel: 'num_set  (set)',
       computation: {
         lines: [
           `Sequence: ${currentSeq.join('→')}`,
@@ -140,7 +140,7 @@ export function generateLongestConsecutiveSteps(nums: number[]): GenericStep[] {
     cubeStates: finalCs,
     pointer: -1,
     hashMap: { ...setHm },
-    hashMapLabel: 'HashSet  { values }',
+    hashMapLabel: 'num_set  (set)',
     computation: {
       lines: [`Longest: ${longest}`],
       resultLine: `[${longestSeq.join(' → ')}]`,

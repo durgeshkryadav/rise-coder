@@ -20,9 +20,12 @@ export class ThreeEngine {
   private azimuth = 0;
   private polar = 0;
   private radius = 0;
+  private readonly minRadius = 9;
+  private readonly maxRadius = 80;
   private readonly minPolar = 0.1;
   private readonly maxPolar = Math.PI - 0.1;
   private readonly rotateSpeed = 0.006;
+  private readonly zoomSpeed = 0.0018;
   private readonly handleMouseDown = (event: MouseEvent) => {
     if (event.button !== 0) return;
     this.isDragging = true;
@@ -41,6 +44,15 @@ export class ThreeEngine {
   private readonly handleMouseUp = () => {
     this.isDragging = false;
     this.renderer.domElement.style.cursor = 'grab';
+  };
+  private readonly handleWheel = (event: WheelEvent) => {
+    event.preventDefault();
+    this.radius = THREE.MathUtils.clamp(
+      this.radius + event.deltaY * this.zoomSpeed * this.radius,
+      this.minRadius,
+      this.maxRadius,
+    );
+    this.updateCameraFromSpherical();
   };
 
   constructor(container: HTMLDivElement) {
@@ -154,12 +166,14 @@ export class ThreeEngine {
 
   private attachMouseControls() {
     this.renderer.domElement.addEventListener('mousedown', this.handleMouseDown);
+    this.renderer.domElement.addEventListener('wheel', this.handleWheel, { passive: false });
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('mouseup', this.handleMouseUp);
   }
 
   private detachMouseControls() {
     this.renderer.domElement.removeEventListener('mousedown', this.handleMouseDown);
+    this.renderer.domElement.removeEventListener('wheel', this.handleWheel);
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('mouseup', this.handleMouseUp);
   }

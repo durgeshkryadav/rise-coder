@@ -34,7 +34,7 @@ const EncodeDecode3DPage: React.FC = () => {
     actions.loadProblem(
       { values: strs, arrayLabel: 'strs[]  —  Input Strings' },
       steps,
-      'Encoded String',
+      'result  (string/list)',
     );
   }, [strsInput, actions]);
 
@@ -66,7 +66,7 @@ const EncodeDecode3DPage: React.FC = () => {
 
       <GenericCodePanel codeLines={ENCODE_DECODE_CODE} activeLines={step?.codeLines} codeClass={step?.codeClass} />
       <GenericLegendPanel items={ENCODE_DECODE_LEGEND} />
-      <GenericDataPanel data={step?.hashMap ?? {}} label="Encode / Decode" />
+      <GenericDataPanel data={step?.hashMap ?? {}} label="result (string/list)" />
 
       <ControlPanel state={state as any} actions={actions as any} />
     </Box>

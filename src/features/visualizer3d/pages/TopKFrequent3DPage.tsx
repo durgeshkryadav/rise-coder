@@ -37,7 +37,7 @@ const TopKFrequent3DPage: React.FC = () => {
     actions.loadProblem(
       { values: nums, title: `k = ${k}`, arrayLabel: 'nums[]  —  Input Array' },
       steps,
-      'FreqMap  { value → count }',
+      'count / buckets',
     );
   }, [numsInput, kInput, actions]);
 

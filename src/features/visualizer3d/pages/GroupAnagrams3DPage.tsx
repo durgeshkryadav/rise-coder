@@ -34,7 +34,7 @@ const GroupAnagrams3DPage: React.FC = () => {
     actions.loadProblem(
       { values: strs, arrayLabel: 'strs[]  —  Input Strings' },
       steps,
-      'Groups  { sorted_key → [strings] }',
+      'groups  (dict)',
     );
   }, [strsInput, actions]);
 
@@ -66,7 +66,7 @@ const GroupAnagrams3DPage: React.FC = () => {
 
       <GenericCodePanel codeLines={GROUP_ANAGRAMS_CODE} activeLines={step?.codeLines} codeClass={step?.codeClass} />
       <GenericLegendPanel items={GROUP_ANAGRAMS_LEGEND} />
-      <GenericDataPanel data={step?.hashMap ?? {}} label="Anagram Groups" />
+      <GenericDataPanel data={step?.hashMap ?? {}} label="groups (dict)" />
 
       <ControlPanel state={state as any} actions={actions as any} />
     </Box>

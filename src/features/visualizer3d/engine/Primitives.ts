@@ -85,15 +85,27 @@ export function createBoundingBox(
   pos: THREE.Vector3,
   color: number,
   labelText: string,
+  edgeStyle: 'full' | 'eight' = 'full',
 ): THREE.Object3D[] {
   const meshes: THREE.Object3D[] = [];
   const geo = new THREE.BoxGeometry(w, h, d);
 
+  const edgeGeometry = edgeStyle === 'eight'
+    ? createEightEdgeGeometry(w, h, d)
+    : new THREE.EdgesGeometry(geo);
+
   const edges = new THREE.LineSegments(
-    new THREE.EdgesGeometry(geo),
-    new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.9 }),
+    edgeGeometry,
+    new THREE.LineBasicMaterial({
+      color,
+      transparent: true,
+      opacity: 0.98,
+      depthTest: false,
+      depthWrite: false,
+    }),
   );
   edges.position.copy(pos);
+  edges.renderOrder = 2;
   scene.add(edges);
   meshes.push(edges);
 
@@ -105,6 +117,9 @@ export function createBoundingBox(
       opacity: 0.09,
       side: THREE.DoubleSide,
       depthWrite: false,
+      polygonOffset: true,
+      polygonOffsetFactor: 1,
+      polygonOffsetUnits: 1,
     }),
   );
   fill.position.copy(pos);
@@ -124,6 +139,36 @@ export function createBoundingBox(
   meshes.push(label);
 
   return meshes;
+}
+
+function createEightEdgeGeometry(w: number, h: number, d: number): THREE.BufferGeometry {
+  const hx = w / 2;
+  const hy = h / 2;
+  const hz = d / 2;
+
+  const points: number[] = [
+    // Bottom rectangle (4 edges)
+    -hx, -hy, -hz, hx, -hy, -hz,
+    hx, -hy, -hz, hx, -hy, hz,
+    hx, -hy, hz, -hx, -hy, hz,
+    -hx, -hy, hz, -hx, -hy, -hz,
+
+    // Vertical connectors (4 edges)
+    -hx, -hy, -hz, -hx, hy, -hz,
+    hx, -hy, -hz, hx, hy, -hz,
+    hx, -hy, hz, hx, hy, hz,
+    -hx, -hy, hz, -hx, hy, hz,
+
+    // Top rectangle (4 edges) to keep frame fully connected
+    -hx, hy, -hz, hx, hy, -hz,
+    hx, hy, -hz, hx, hy, hz,
+    hx, hy, hz, -hx, hy, hz,
+    -hx, hy, hz, -hx, hy, -hz,
+  ];
+
+  const edgeGeo = new THREE.BufferGeometry();
+  edgeGeo.setAttribute('position', new THREE.Float32BufferAttribute(points, 3));
+  return edgeGeo;
 }
 
 export function create3DArrow(

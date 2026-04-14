@@ -14,7 +14,7 @@ export function generateEncodeDecodeSteps(strs: string[]): GenericStep[] {
     cubeLabels: strs,
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'Encoded String',
+    hashMapLabel: 'result  (string)',
     codeLines: [1],
     codeClass: 'active',
   });
@@ -26,7 +26,7 @@ export function generateEncodeDecodeSteps(strs: string[]): GenericStep[] {
     cubeLabels: strs,
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'Encoded String',
+    hashMapLabel: 'result  (string)',
     codeLines: [2, 3],
     codeClass: 'active',
   });
@@ -49,7 +49,7 @@ export function generateEncodeDecodeSteps(strs: string[]): GenericStep[] {
       cubeLabels: strs,
       pointer: i,
       hashMap: { encoded: `"${encoded}"` },
-      hashMapLabel: 'Encoded String',
+      hashMapLabel: 'result  (string)',
       computation: {
         lines: [`Phase 1: Encode`, `"${s}" → ${s.length}#${s}`],
       },
@@ -67,7 +67,7 @@ export function generateEncodeDecodeSteps(strs: string[]): GenericStep[] {
     cubeLabels: strs,
     pointer: -1,
     hashMap: { encoded: `"${encoded}"` },
-    hashMapLabel: 'Encoded String',
+    hashMapLabel: 'result  (string)',
     computation: {
       lines: ['Encoding complete!'],
       resultLine: `"${encoded}"`,
@@ -102,7 +102,7 @@ export function generateEncodeDecodeSteps(strs: string[]): GenericStep[] {
       cubeLabels: strs,
       pointer: decodeIdx,
       hashMap: { ...decHm },
-      hashMapLabel: 'Decoded  { index → string }',
+      hashMapLabel: 'result  (list)',
       computation: {
         lines: [`Phase 2: Decode`, `len=${len}, str="${str}"`],
       },
@@ -125,7 +125,7 @@ export function generateEncodeDecodeSteps(strs: string[]): GenericStep[] {
     cubeLabels: strs,
     pointer: -1,
     hashMap: { ...finalHm },
-    hashMapLabel: 'Decoded  { index → string }',
+    hashMapLabel: 'result  (list)',
     computation: {
       lines: ['Decode complete!'],
       resultLine: 'VERIFIED ✓',

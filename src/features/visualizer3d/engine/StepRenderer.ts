@@ -29,6 +29,8 @@ export class StepRenderer {
   private engine: ThreeEngine;
   private sceneBuilder: SceneBuilder;
   private particles: ParticleSystem;
+  private readonly secondaryBoxHeight = 4.8;
+  private readonly secondaryBoxDepth = 2.8;
 
   constructor(engine: ThreeEngine, sceneBuilder: SceneBuilder, particles: ParticleSystem) {
     this.engine = engine;
@@ -94,11 +96,12 @@ export class StepRenderer {
       ...P.createBoundingBox(
         scene,
         5,
-        3.5,
-        2.8,
+        this.secondaryBoxHeight,
+        this.secondaryBoxDepth,
         new THREE.Vector3(0, 1, LAYOUT.HASHMAP_Z),
         COLORS.HM_BOX,
-        'HashMap  { value → index }',
+        'hashMap  { value -> index }',
+        'eight',
       ),
     );
     const el = P.makeTextSprite('empty', { fontSize: 30, color: '#444', scale: 2 });
@@ -149,11 +152,12 @@ export class StepRenderer {
         ...P.createBoundingBox(
           scene,
           hmW,
-          3.5,
-          2.8,
+          this.secondaryBoxHeight,
+          this.secondaryBoxDepth,
           new THREE.Vector3(0, 1, LAYOUT.HASHMAP_Z),
           COLORS.HM_BOX,
-          'HashMap  { value → index }',
+          'hashMap  { value -> index }',
+          'eight',
         ),
       );
     } else {
@@ -161,11 +165,12 @@ export class StepRenderer {
         ...P.createBoundingBox(
           scene,
           5,
-          3.5,
-          2.8,
+          this.secondaryBoxHeight,
+          this.secondaryBoxDepth,
           new THREE.Vector3(0, 1, LAYOUT.HASHMAP_Z),
           COLORS.HM_BOX,
-          'HashMap  { value → index }',
+          'hashMap  { value -> index }',
+          'eight',
         ),
       );
       const el = P.makeTextSprite('empty', { fontSize: 30, color: '#444', scale: 2 });
@@ -373,4 +378,5 @@ export class StepRenderer {
       if (t < 1) requestAnimationFrame(tick);
     })();
   }
+
 }

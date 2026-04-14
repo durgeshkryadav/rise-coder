@@ -34,7 +34,7 @@ const ProductExceptSelf3DPage: React.FC = () => {
     actions.loadProblem(
       { values: nums, arrayLabel: 'nums[]  —  Input Array' },
       steps,
-      'Result Array',
+      'result  (array)',
     );
   }, [numsInput, actions]);
 
@@ -66,7 +66,7 @@ const ProductExceptSelf3DPage: React.FC = () => {
 
       <GenericCodePanel codeLines={PRODUCT_EXCEPT_SELF_CODE} activeLines={step?.codeLines} codeClass={step?.codeClass} timeComplexity="O(n)" spaceComplexity="O(1)" />
       <GenericLegendPanel items={PRODUCT_EXCEPT_SELF_LEGEND} />
-      <GenericDataPanel data={step?.hashMap ?? {}} label="Result Array" />
+      <GenericDataPanel data={step?.hashMap ?? {}} label="result (array)" />
 
       <ControlPanel state={state as any} actions={actions as any} />
     </Box>

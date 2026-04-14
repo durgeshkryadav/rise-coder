@@ -35,7 +35,7 @@ const ValidAnagram3DPage: React.FC = () => {
     actions.loadProblem(
       { values: allChars, title: `s = "${s}" | t = "${t}"`, arrayLabel: 'Characters  —  s then t' },
       steps,
-      'FreqMap  { char → count }',
+      'count  (dict)',
     );
   }, [sInput, tInput, actions]);
 
@@ -69,7 +69,7 @@ const ValidAnagram3DPage: React.FC = () => {
 
       <GenericCodePanel codeLines={VALID_ANAGRAM_CODE} activeLines={step?.codeLines} codeClass={step?.codeClass} />
       <GenericLegendPanel items={VALID_ANAGRAM_LEGEND} />
-      <GenericDataPanel data={step?.hashMap ?? {}} label="Frequency Map" />
+      <GenericDataPanel data={step?.hashMap ?? {}} label="count (dict)" />
 
       <ControlPanel state={state as any} actions={actions as any} />
     </Box>

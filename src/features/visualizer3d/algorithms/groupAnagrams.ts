@@ -14,7 +14,7 @@ export function generateGroupAnagramsSteps(strs: string[]): GenericStep[] {
     cubeLabels: strs,
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'Groups  { sorted_key → [strings] }',
+    hashMapLabel: 'groups  (dict)',
     codeLines: [1, 2],
     codeClass: 'active',
   });
@@ -26,7 +26,7 @@ export function generateGroupAnagramsSteps(strs: string[]): GenericStep[] {
     cubeLabels: strs,
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'Groups  { sorted_key → [strings] }',
+    hashMapLabel: 'groups  (dict)',
     codeLines: [3],
     codeClass: 'active',
   });
@@ -54,7 +54,7 @@ export function generateGroupAnagramsSteps(strs: string[]): GenericStep[] {
       cubeLabels: strs,
       pointer: i,
       hashMap: { ...hmObj },
-      hashMapLabel: 'Groups  { sorted_key → [strings] }',
+      hashMapLabel: 'groups  (dict)',
       computation: {
         lines: [`sort("${s}") = "${key}"`],
       },
@@ -80,7 +80,7 @@ export function generateGroupAnagramsSteps(strs: string[]): GenericStep[] {
       cubeLabels: strs,
       pointer: i,
       hashMap: { ...afterHm },
-      hashMapLabel: 'Groups  { sorted_key → [strings] }',
+      hashMapLabel: 'groups  (dict)',
       storeArrow: { fromIndex: i, value: key },
       codeLines: [5],
       codeClass: 'store',
@@ -98,7 +98,7 @@ export function generateGroupAnagramsSteps(strs: string[]): GenericStep[] {
     cubeLabels: strs,
     pointer: -1,
     hashMap: { ...hmObj },
-    hashMapLabel: 'Groups  { sorted_key → [strings] }',
+    hashMapLabel: 'groups  (dict)',
     computation: {
       lines: [`${result.length} groups found`],
       resultLine: 'COMPLETE!',

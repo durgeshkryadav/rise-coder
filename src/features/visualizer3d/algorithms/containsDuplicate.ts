@@ -13,7 +13,7 @@ export function generateContainsDuplicateSteps(nums: number[]): GenericStep[] {
     cubeStates: nums.map(() => 'default' as GenericCubeState),
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'HashSet  { seen values }',
+    hashMapLabel: 'seen  (set)',
     codeLines: [1, 2],
     codeClass: 'active',
   });
@@ -24,7 +24,7 @@ export function generateContainsDuplicateSteps(nums: number[]): GenericStep[] {
     cubeStates: nums.map(() => 'default' as GenericCubeState),
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'HashSet  { seen values }',
+    hashMapLabel: 'seen  (set)',
     codeLines: [3],
     codeClass: 'active',
   });
@@ -48,7 +48,7 @@ export function generateContainsDuplicateSteps(nums: number[]): GenericStep[] {
       cubeStates: [...cs],
       pointer: i,
       hashMap: { ...hmObj },
-      hashMapLabel: 'HashSet  { seen values }',
+      hashMapLabel: 'seen  (set)',
       computation: {
         lines: [`Check: ${val} in set?`],
       },
@@ -70,7 +70,7 @@ export function generateContainsDuplicateSteps(nums: number[]): GenericStep[] {
         cubeStates: fs,
         pointer: i,
         hashMap: { ...hmObj },
-        hashMapLabel: 'HashSet  { seen values }',
+        hashMapLabel: 'seen  (set)',
         computation: {
           lines: [`${val} already seen!`],
           resultLine: 'DUPLICATE FOUND!',
@@ -96,7 +96,7 @@ export function generateContainsDuplicateSteps(nums: number[]): GenericStep[] {
         cubeStates: as,
         pointer: i,
         hashMap: { ...updatedHm },
-        hashMapLabel: 'HashSet  { seen values }',
+        hashMapLabel: 'seen  (set)',
         storeArrow: { fromIndex: i, value: val },
         codeLines: [6],
         codeClass: 'store',
@@ -110,7 +110,7 @@ export function generateContainsDuplicateSteps(nums: number[]): GenericStep[] {
     cubeStates: nums.map(() => 'default' as GenericCubeState),
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'HashSet  { seen values }',
+    hashMapLabel: 'seen  (set)',
     computation: {
       lines: ['No duplicates'],
       resultLine: 'Return false',

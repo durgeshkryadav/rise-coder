@@ -45,6 +45,8 @@ export class GenericStepRenderer {
   private engine: ThreeEngine;
   private sceneBuilder: GenericSceneBuilder;
   private particles: ParticleSystem;
+  private readonly secondaryBoxHeight = 4.8;
+  private readonly secondaryBoxDepth = 2.8;
 
   constructor(engine: ThreeEngine, sceneBuilder: GenericSceneBuilder, particles: ParticleSystem) {
     this.engine = engine;
@@ -112,10 +114,14 @@ export class GenericStepRenderer {
 
     this.hashMapMeshes.push(
       ...P.createBoundingBox(
-        scene, 5, 3.5, 2.8,
+        scene,
+        5,
+        this.secondaryBoxHeight,
+        this.secondaryBoxDepth,
         new THREE.Vector3(0, 1, LAYOUT.HASHMAP_Z),
         COLORS.HM_BOX,
         label ?? 'Data Structure',
+        'eight',
       ),
     );
     const el = P.makeTextSprite('empty', { fontSize: 30, color: '#444', scale: 2 });
@@ -164,11 +170,29 @@ export class GenericStepRenderer {
 
       const hmW = Math.max((keys.length - 1) * LAYOUT.HM_SPACING + 3.5, 5);
       this.hashMapMeshes.push(
-        ...P.createBoundingBox(scene, hmW, 3.5, 2.8, new THREE.Vector3(0, 1, LAYOUT.HASHMAP_Z), COLORS.HM_BOX, boxLabel),
+        ...P.createBoundingBox(
+          scene,
+          hmW,
+          this.secondaryBoxHeight,
+          this.secondaryBoxDepth,
+          new THREE.Vector3(0, 1, LAYOUT.HASHMAP_Z),
+          COLORS.HM_BOX,
+          boxLabel,
+          'eight',
+        ),
       );
     } else {
       this.hashMapMeshes.push(
-        ...P.createBoundingBox(scene, 5, 3.5, 2.8, new THREE.Vector3(0, 1, LAYOUT.HASHMAP_Z), COLORS.HM_BOX, boxLabel),
+        ...P.createBoundingBox(
+          scene,
+          5,
+          this.secondaryBoxHeight,
+          this.secondaryBoxDepth,
+          new THREE.Vector3(0, 1, LAYOUT.HASHMAP_Z),
+          COLORS.HM_BOX,
+          boxLabel,
+          'eight',
+        ),
       );
       const el = P.makeTextSprite('empty', { fontSize: 30, color: '#444', scale: 2 });
       el.position.set(0, 1, LAYOUT.HASHMAP_Z);
@@ -296,4 +320,5 @@ export class GenericStepRenderer {
       if (t < 1) requestAnimationFrame(tick);
     })();
   }
+
 }

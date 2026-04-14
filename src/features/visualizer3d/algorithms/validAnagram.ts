@@ -17,7 +17,7 @@ export function generateValidAnagramSteps(s: string, t: string): GenericStep[] {
     cubeLabels: allChars,
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'FreqMap  { char → count }',
+    hashMapLabel: 'count  (dict)',
     codeLines: [1, 2, 3],
     codeClass: 'active',
   });
@@ -30,7 +30,7 @@ export function generateValidAnagramSteps(s: string, t: string): GenericStep[] {
       cubeLabels: allChars,
       pointer: -1,
       hashMap: {},
-      hashMapLabel: 'FreqMap  { char → count }',
+      hashMapLabel: 'count  (dict)',
       computation: {
         lines: [`len(s)=${s.length} ≠ len(t)=${t.length}`],
         resultLine: 'Return False',
@@ -50,7 +50,7 @@ export function generateValidAnagramSteps(s: string, t: string): GenericStep[] {
     cubeLabels: allChars,
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'FreqMap  { char → count }',
+    hashMapLabel: 'count  (dict)',
     codeLines: [4],
     codeClass: 'active',
   });
@@ -78,7 +78,7 @@ export function generateValidAnagramSteps(s: string, t: string): GenericStep[] {
       cubeLabels: allChars,
       pointer: i,
       hashMap: { ...hmObj },
-      hashMapLabel: 'FreqMap  { char → count }',
+      hashMapLabel: 'count  (dict)',
       computation: {
         lines: [`Phase 1: Count s`, `'${ch}' → ${count[ch]}`],
       },
@@ -111,7 +111,7 @@ export function generateValidAnagramSteps(s: string, t: string): GenericStep[] {
       cubeLabels: allChars,
       pointer: globalIdx,
       hashMap: { ...hmObj },
-      hashMapLabel: 'FreqMap  { char → count }',
+      hashMapLabel: 'count  (dict)',
       computation: {
         lines: [`Phase 2: Subtract t`, `'${ch}' → ${count[ch]}`],
       },
@@ -139,7 +139,7 @@ export function generateValidAnagramSteps(s: string, t: string): GenericStep[] {
     cubeLabels: allChars,
     pointer: -1,
     hashMap: { ...hmObj },
-    hashMapLabel: 'FreqMap  { char → count }',
+    hashMapLabel: 'count  (dict)',
     computation: {
       lines: ['Check all counts == 0'],
       resultLine: allZero ? 'VALID ANAGRAM!' : 'NOT AN ANAGRAM',

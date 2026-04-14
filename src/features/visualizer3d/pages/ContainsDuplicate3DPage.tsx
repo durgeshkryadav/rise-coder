@@ -31,7 +31,7 @@ const ContainsDuplicate3DPage: React.FC = () => {
       .filter((n) => !isNaN(n));
     if (nums.length < 1) return;
     const steps = generateContainsDuplicateSteps(nums);
-    actions.loadProblem({ values: nums, arrayLabel: 'nums[]  —  Input Array' }, steps, 'HashSet  { seen values }');
+    actions.loadProblem({ values: nums, arrayLabel: 'nums[]  —  Input Array' }, steps, 'seen  (set)');
   }, [numsInput, actions]);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const ContainsDuplicate3DPage: React.FC = () => {
 
       <GenericCodePanel codeLines={CONTAINS_DUPLICATE_CODE} activeLines={step?.codeLines} codeClass={step?.codeClass} />
       <GenericLegendPanel items={CONTAINS_DUPLICATE_LEGEND} />
-      <GenericDataPanel data={step?.hashMap ?? {}} label="HashSet" />
+      <GenericDataPanel data={step?.hashMap ?? {}} label="seen (set)" />
 
       <ControlPanel state={state as any} actions={actions as any} />
     </Box>

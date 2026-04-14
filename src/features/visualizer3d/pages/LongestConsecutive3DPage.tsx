@@ -34,7 +34,7 @@ const LongestConsecutive3DPage: React.FC = () => {
     actions.loadProblem(
       { values: nums, arrayLabel: 'nums[]  —  Input Array' },
       steps,
-      'HashSet  { values }',
+      'num_set  (set)',
     );
   }, [numsInput, actions]);
 
@@ -66,7 +66,7 @@ const LongestConsecutive3DPage: React.FC = () => {
 
       <GenericCodePanel codeLines={LONGEST_CONSECUTIVE_CODE} activeLines={step?.codeLines} codeClass={step?.codeClass} />
       <GenericLegendPanel items={LONGEST_CONSECUTIVE_LEGEND} />
-      <GenericDataPanel data={step?.hashMap ?? {}} label="HashSet" />
+      <GenericDataPanel data={step?.hashMap ?? {}} label="num_set (set)" />
 
       <ControlPanel state={state as any} actions={actions as any} />
     </Box>

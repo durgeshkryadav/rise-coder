@@ -30,9 +30,9 @@ export const CAMERA = {
   FOV: 62,
   NEAR: 0.1,
   FAR: 200,
-  DEFAULT_Y: 10,
-  DEFAULT_Z: 18,
-  LOOK_AT: { x: 0, y: 1.5, z: -1 },
+  DEFAULT_Y: 9,
+  DEFAULT_Z: 16,
+  LOOK_AT: { x: 0, y: 1.6, z: -0.6 },
 } as const;
 
 export const ANIMATION = {

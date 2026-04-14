@@ -14,7 +14,7 @@ export function generateProductExceptSelfSteps(nums: number[]): GenericStep[] {
     cubeStates: nums.map(() => 'default' as GenericCubeState),
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'Result Array',
+    hashMapLabel: 'result  (array)',
     codeLines: [1, 2],
     codeClass: 'active',
   });
@@ -25,7 +25,7 @@ export function generateProductExceptSelfSteps(nums: number[]): GenericStep[] {
     cubeStates: nums.map(() => 'default' as GenericCubeState),
     pointer: -1,
     hashMap: {},
-    hashMapLabel: 'Result Array',
+    hashMapLabel: 'result  (array)',
     codeLines: [3],
     codeClass: 'active',
   });
@@ -51,7 +51,7 @@ export function generateProductExceptSelfSteps(nums: number[]): GenericStep[] {
       cubeStates: [...cs],
       pointer: i,
       hashMap: { ...hmObj },
-      hashMapLabel: 'Result Array  (left pass)',
+      hashMapLabel: 'result  (array)',
       computation: {
         lines: [
           `Pass 1: Left→Right`,
@@ -89,7 +89,7 @@ export function generateProductExceptSelfSteps(nums: number[]): GenericStep[] {
       cubeStates: [...cs],
       pointer: i,
       hashMap: { ...hmObj },
-      hashMapLabel: 'Result Array  (right pass)',
+      hashMapLabel: 'result  (array)',
       computation: {
         lines: [
           `Pass 2: Right←Left`,
@@ -119,7 +119,7 @@ export function generateProductExceptSelfSteps(nums: number[]): GenericStep[] {
     cubeStates: nums.map(() => 'result' as GenericCubeState),
     pointer: -1,
     hashMap: { ...finalHm },
-    hashMapLabel: 'Result Array',
+    hashMapLabel: 'result  (array)',
     computation: {
       lines: ['Both passes complete!'],
       resultLine: `[${result.join(', ')}]`,
