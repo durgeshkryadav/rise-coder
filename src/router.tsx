@@ -13,6 +13,13 @@ import ResetPasswordPage from '@/pages/auth/ResetPasswordPage';
 import Loadable from '@/utils/loadable';
 
 const TwoSum3DPage = Loadable(() => import('@/features/visualizer3d/pages/TwoSum3DPage'));
+const ContainsDuplicate3DPage = Loadable(() => import('@/features/visualizer3d/pages/ContainsDuplicate3DPage'));
+const ValidAnagram3DPage = Loadable(() => import('@/features/visualizer3d/pages/ValidAnagram3DPage'));
+const GroupAnagrams3DPage = Loadable(() => import('@/features/visualizer3d/pages/GroupAnagrams3DPage'));
+const TopKFrequent3DPage = Loadable(() => import('@/features/visualizer3d/pages/TopKFrequent3DPage'));
+const EncodeDecode3DPage = Loadable(() => import('@/features/visualizer3d/pages/EncodeDecode3DPage'));
+const ProductExceptSelf3DPage = Loadable(() => import('@/features/visualizer3d/pages/ProductExceptSelf3DPage'));
+const LongestConsecutive3DPage = Loadable(() => import('@/features/visualizer3d/pages/LongestConsecutive3DPage'));
 
 /**
  * Router — Uses container Loadable pattern from react-boilerplate.
@@ -31,6 +38,62 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <TwoSum3DPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/dsa/blind-75/contains-duplicate-3d',
+    element: (
+      <ProtectedRoute>
+        <ContainsDuplicate3DPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/dsa/blind-75/valid-anagram-3d',
+    element: (
+      <ProtectedRoute>
+        <ValidAnagram3DPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/dsa/blind-75/group-anagrams-3d',
+    element: (
+      <ProtectedRoute>
+        <GroupAnagrams3DPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/dsa/blind-75/top-k-frequent-3d',
+    element: (
+      <ProtectedRoute>
+        <TopKFrequent3DPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/dsa/blind-75/encode-decode-3d',
+    element: (
+      <ProtectedRoute>
+        <EncodeDecode3DPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/dsa/blind-75/product-except-self-3d',
+    element: (
+      <ProtectedRoute>
+        <ProductExceptSelf3DPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/dsa/blind-75/longest-consecutive-3d',
+    element: (
+      <ProtectedRoute>
+        <LongestConsecutive3DPage />
       </ProtectedRoute>
     ),
   },

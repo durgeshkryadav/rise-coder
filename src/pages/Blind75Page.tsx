@@ -28,7 +28,14 @@ const difficultyColor: Record<string, string> = {
   Hard: '#ff375f',
 };
 const problem3DRoutes: Record<string, string> = {
+  'b75-1': '/dsa/blind-75/contains-duplicate-3d',
+  'b75-2': '/dsa/blind-75/valid-anagram-3d',
   'b75-3': '/dsa/blind-75/two-sum-3d',
+  'b75-4': '/dsa/blind-75/group-anagrams-3d',
+  'b75-5': '/dsa/blind-75/top-k-frequent-3d',
+  'b75-6': '/dsa/blind-75/encode-decode-3d',
+  'b75-7': '/dsa/blind-75/product-except-self-3d',
+  'b75-8': '/dsa/blind-75/longest-consecutive-3d',
 };
 
 /* ─── localStorage helpers ────────────────────────────── */

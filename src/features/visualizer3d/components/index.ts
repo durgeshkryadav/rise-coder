@@ -4,3 +4,6 @@ export { CodePanel } from './CodePanel';
 export { HashMapPanel } from './HashMapPanel';
 export { ComputationPanel } from './ComputationPanel';
 export { LegendPanel } from './LegendPanel';
+export { GenericCodePanel } from './GenericCodePanel';
+export { GenericDataPanel } from './GenericDataPanel';
+export { GenericLegendPanel } from './GenericLegendPanel';
