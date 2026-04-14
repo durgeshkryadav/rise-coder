@@ -106,6 +106,18 @@ export class GenericStepRenderer {
 
   renderEmpty(label?: string) {
     const { scene } = this.engine;
+    const cubes = this.sceneBuilder.cubes;
+    const pointer = this.sceneBuilder.pointer;
+
+    cubes.forEach((cube) => {
+      const mat = cube.material as THREE.MeshStandardMaterial;
+      mat.color.setHex(COLORS.DEFAULT);
+      mat.emissive.setHex(COLORS.DEFAULT);
+      mat.emissiveIntensity = 0.15;
+      cube.scale.set(1, 1, 1);
+    });
+    if (pointer) pointer.visible = false;
+
     this.cancelSearchProbe();
     P.clearGroup(scene, this.hashMapMeshes);
     P.clearGroup(scene, this.dynamicMeshes);
