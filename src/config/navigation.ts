@@ -1,5 +1,5 @@
 import type { NavSectionConfig } from '@/types';
-import { faCubes, faSitemap, faReact, faJs } from './navIcons';
+import { faCubes } from './navIcons';
 
 const navigation: NavSectionConfig[] = [
   {
@@ -18,6 +18,8 @@ const navigation: NavSectionConfig[] = [
       { id: 'dsa-dp', label: 'Dynamic Programming', desc: 'Memoization, tabulation, patterns', path: '/dsa/dynamic-programming' },
     ],
   },
+  // Temporarily disabled sidebar sections. Uncomment when ready to enable again.
+  /*
   {
     id: 'system-design',
     label: 'System Design',
@@ -58,6 +60,7 @@ const navigation: NavSectionConfig[] = [
       { id: 'js-es6', label: 'ES6+ Features', desc: 'Destructuring, spread, modules, classes', path: '/javascript/es6' },
     ],
   },
+  */
 ];
 
 export default navigation;
