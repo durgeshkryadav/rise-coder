@@ -12,11 +12,10 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import Chip from '@mui/material/Chip';
 import LinearProgress from '@mui/material/LinearProgress';
+import { keyframes } from '@mui/system';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarIcon from '@mui/icons-material/Star';
 import LaunchIcon from '@mui/icons-material/Launch';
-import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import ViewInArIcon from '@mui/icons-material/ViewInAr';
 import blind75Data, { type Blind75Problem } from '@/data/blind75';
 import ProgressService, { type ProblemProgress } from '@/services/progressService';
 import { colors } from '@/design-system/tokens';
@@ -37,6 +36,15 @@ const problem3DRoutes: Record<string, string> = {
   'b75-7': '/dsa/blind-75/product-except-self-3d',
   'b75-8': '/dsa/blind-75/longest-consecutive-3d',
 };
+
+const rotate3dIcon = keyframes`
+  0% {
+    transform: rotateX(-18deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(-18deg) rotateY(360deg);
+  }
+`;
 
 /* ─── localStorage helpers ────────────────────────────── */
 const STORAGE_KEY = 'blind75_progress';
@@ -118,7 +126,7 @@ export default function Blind75Page() {
   return (
     <article>
       {/* ── Header ───────────────────────────────────── */}
-      <Box sx={{ mb: 4 }}>
+      <Box sx={{ mb: 4, width: '100%', maxWidth: 1120, mx: 'auto' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
           <Typography variant="h5" sx={{ fontWeight: 700, color: 'text.primary' }}>
             Blind 75
@@ -144,7 +152,7 @@ export default function Blind75Page() {
         const weekCompleted = week.problems.filter((p) => progressMap[p.id]?.completed).length;
 
         return (
-          <Box key={week.week} sx={{ mb: 5 }}>
+          <Box key={week.week} sx={{ mb: 5, width: '100%', maxWidth: 1120, mx: 'auto' }}>
             {/* Week title + progress */}
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1.5 }}>
               <Typography variant="h6" sx={{ fontWeight: 700, color: 'text.primary' }}>
@@ -171,6 +179,9 @@ export default function Blind75Page() {
             {/* Table */}
             <TableContainer
               sx={{
+                width: '100%',
+                maxWidth: 1120,
+                mx: 'auto',
                 bgcolor: colors.surface[100],
                 borderRadius: 2,
                 border: '1px solid',
@@ -196,7 +207,6 @@ export default function Blind75Page() {
                     <TableCell width={60} align="center">Star</TableCell>
                     <TableCell>Problem</TableCell>
                     <TableCell width={110} align="center">Difficulty</TableCell>
-                    <TableCell width={80} align="center">Solution</TableCell>
                     <TableCell width={100} align="center">3D Solution</TableCell>
                   </TableRow>
                 </TableHead>
@@ -268,13 +278,6 @@ export default function Blind75Page() {
                           />
                         </TableCell>
 
-                        {/* Solution */}
-                        <TableCell align="center">
-                          <IconButton size="small" sx={{ color: colors.neutral[600] }}>
-                            <DescriptionOutlinedIcon fontSize="small" />
-                          </IconButton>
-                        </TableCell>
-
                         {/* 3D Solution */}
                         <TableCell align="center">
                           <IconButton
@@ -286,7 +289,32 @@ export default function Blind75Page() {
                               if (route) navigate(route);
                             }}
                           >
-                            <ViewInArIcon fontSize="small" />
+                            <Box
+                              sx={{
+                                width: 18,
+                                height: 18,
+                                display: 'grid',
+                                placeItems: 'center',
+                                perspective: 220,
+                              }}
+                            >
+                              <Box
+                                sx={{
+                                  width: 16,
+                                  height: 16,
+                                  position: 'relative',
+                                  transformStyle: 'preserve-3d',
+                                  animation: `${rotate3dIcon} 4.4s linear infinite`,
+                                }}
+                              >
+                                <Box sx={miniCubeFace('#7f78ff', 'translateZ(8px)')} />
+                                <Box sx={miniCubeFace('#6f67ef', 'rotateY(180deg) translateZ(8px)')} />
+                                <Box sx={miniCubeFace('#8a82ff', 'rotateY(90deg) translateZ(8px)')} />
+                                <Box sx={miniCubeFace('#5f57df', 'rotateY(-90deg) translateZ(8px)')} />
+                                <Box sx={miniCubeFace('#9d96ff', 'rotateX(90deg) translateZ(8px)')} />
+                                <Box sx={miniCubeFace('#5048d0', 'rotateX(-90deg) translateZ(8px)')} />
+                              </Box>
+                            </Box>
                           </IconButton>
                         </TableCell>
                       </TableRow>
@@ -300,6 +328,17 @@ export default function Blind75Page() {
       })}
     </article>
   );
+}
+
+function miniCubeFace(color: string, transform: string) {
+  return {
+    position: 'absolute',
+    inset: 0,
+    border: '1px solid #6c63ff',
+    background: `linear-gradient(145deg, rgba(255,255,255,0.22), ${color})`,
+    transform,
+    backfaceVisibility: 'hidden',
+  };
 }
 
 /* ─── Sub-components ──────────────────────────────────── */
