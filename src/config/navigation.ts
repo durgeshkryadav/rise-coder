@@ -10,12 +10,12 @@ const navigation: NavSectionConfig[] = [
     color: '#c8714a',
     children: [
       { id: 'dsa-blind75', label: 'Blind 75', desc: 'Top 75 most asked interview problems', path: '/dsa/blind-75' },
-      { id: 'dsa-top100', label: 'Top 100', desc: 'Most frequently asked coding questions', path: '/dsa/top-100' },
-      { id: 'dsa-arrays', label: 'Arrays', desc: 'Sorting, sliding window, two pointers', path: '/dsa/arrays' },
-      { id: 'dsa-linked-lists', label: 'Linked Lists', desc: 'Reversal, cycle detection, merge', path: '/dsa/linked-lists' },
-      { id: 'dsa-trees', label: 'Trees', desc: 'BST, traversals, height problems', path: '/dsa/trees' },
-      { id: 'dsa-graphs', label: 'Graphs', desc: 'BFS, DFS, shortest path algorithms', path: '/dsa/graphs' },
-      { id: 'dsa-dp', label: 'Dynamic Programming', desc: 'Memoization, tabulation, patterns', path: '/dsa/dynamic-programming' },
+      // { id: 'dsa-top100', label: 'Top 100', desc: 'Most frequently asked coding questions', path: '/dsa/top-100' },
+      // { id: 'dsa-arrays', label: 'Arrays', desc: 'Sorting, sliding window, two pointers', path: '/dsa/arrays' },
+      // { id: 'dsa-linked-lists', label: 'Linked Lists', desc: 'Reversal, cycle detection, merge', path: '/dsa/linked-lists' },
+      // { id: 'dsa-trees', label: 'Trees', desc: 'BST, traversals, height problems', path: '/dsa/trees' },
+      // { id: 'dsa-graphs', label: 'Graphs', desc: 'BFS, DFS, shortest path algorithms', path: '/dsa/graphs' },
+      // { id: 'dsa-dp', label: 'Dynamic Programming', desc: 'Memoization, tabulation, patterns', path: '/dsa/dynamic-programming' },
     ],
   },
   // Temporarily disabled sidebar sections. Uncomment when ready to enable again.
