@@ -1,0 +1,1 @@
+import{j as a}from"./query-CdZEfZmI.js";import{d as m}from"./mui-DqjGd8Ln.js";function i({children:r,sx:t,...o}){return a.jsx(m,{variant:"h1",sx:{color:"text.primary",letterSpacing:"-0.03em",mb:2,...t},...o,children:r})}export{i as H};

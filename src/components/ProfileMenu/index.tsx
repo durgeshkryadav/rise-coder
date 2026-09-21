@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import Switch from '@mui/material/Switch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear, faRightFromBracket, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { AUTH_ENABLED } from '@/config/auth';
 import { useAuth } from '@/contexts/AuthContext';
 import { useThemeMode } from '@/contexts/ThemeContext';
 import { colors } from '@/design-system/tokens';
@@ -87,7 +88,7 @@ function ProfileMenu() {
             {user?.email || 'User'}
           </Typography>
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            Signed in
+            {AUTH_ENABLED ? 'Signed in' : 'Local mode'}
           </Typography>
         </Box>
 
@@ -121,18 +122,22 @@ function ProfileMenu() {
           />
         </MenuItem>
 
-        <Divider />
+        {AUTH_ENABLED && (
+          <>
+            <Divider />
 
-        {/* Logout */}
-        <MenuItem onClick={handleSignOut} sx={{ py: 1 }}>
-          <ListItemIcon sx={{ color: 'error.main', minWidth: 36 }}>
-            <FontAwesomeIcon icon={faRightFromBracket} style={{ fontSize: '0.875rem' }} />
-          </ListItemIcon>
-          <ListItemText
-            primary="Logout"
-            primaryTypographyProps={{ fontSize: '0.875rem', color: 'error.main' }}
-          />
-        </MenuItem>
+            {/* Logout */}
+            <MenuItem onClick={handleSignOut} sx={{ py: 1 }}>
+              <ListItemIcon sx={{ color: 'error.main', minWidth: 36 }}>
+                <FontAwesomeIcon icon={faRightFromBracket} style={{ fontSize: '0.875rem' }} />
+              </ListItemIcon>
+              <ListItemText
+                primary="Logout"
+                primaryTypographyProps={{ fontSize: '0.875rem', color: 'error.main' }}
+              />
+            </MenuItem>
+          </>
+        )}
       </Menu>
     </>
   );

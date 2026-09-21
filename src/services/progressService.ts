@@ -1,3 +1,4 @@
+import { AUTH_ENABLED } from '@/config/auth';
 import { supabase } from './supabase';
 
 export interface ProblemProgress {
@@ -15,6 +16,8 @@ const ProgressService = {
    * Fetch all completed/starred records for the current user.
    */
   async fetchAll(): Promise<ProblemProgress[]> {
+    if (!AUTH_ENABLED || !supabase) return [];
+
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return [];
 
@@ -32,6 +35,8 @@ const ProgressService = {
    * Uses upsert so the row is created on first toggle.
    */
   async toggleCompleted(problemId: string, completed: boolean): Promise<void> {
+    if (!AUTH_ENABLED || !supabase) return;
+
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Not authenticated');
 
@@ -54,6 +59,8 @@ const ProgressService = {
    * Toggle the starred status for a single problem.
    */
   async toggleStarred(problemId: string, starred: boolean): Promise<void> {
+    if (!AUTH_ENABLED || !supabase) return;
+
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Not authenticated');
 

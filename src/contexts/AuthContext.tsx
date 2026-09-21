@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback, useMemo, type ReactNode } from 'react';
 import type { User, Session } from '@supabase/supabase-js';
+import { AUTH_ENABLED, GUEST_USER } from '@/config/auth';
 import AuthService from '@/services/authService';
 import type { AuthContextValue, AuthCredentials } from '@/types';
 
@@ -15,6 +16,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    if (!AUTH_ENABLED) {
+      setUser(GUEST_USER);
+      setLoading(false);
+      return undefined;
+    }
+
     // Get initial session
     AuthService.getSession().then((sess) => {
       setSession(sess);
