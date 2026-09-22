@@ -73,7 +73,7 @@ const TopKFrequent3DPage: React.FC = () => {
       <GenericLegendPanel items={TOP_K_FREQUENT_LEGEND} />
       <GenericDataPanel data={step?.hashMap ?? {}} label="Frequency / Buckets" />
 
-      <ControlPanel state={state as any} actions={actions as any} />
+      <ControlPanel state={state} actions={actions} />
     </Box>
   );
 };

@@ -1,3 +1,5 @@
 import loadable from '@/utils/loadable';
 
-export default loadable(() => import('./index'));
+const NotFoundPageLoadable = loadable(() => import('./index'));
+
+export default NotFoundPageLoadable;

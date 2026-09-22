@@ -1,3 +1,5 @@
 import loadable from '@/utils/loadable';
 
-export default loadable(() => import('./index'));
+const TopicPageLoadable = loadable(() => import('./index'));
+
+export default TopicPageLoadable;

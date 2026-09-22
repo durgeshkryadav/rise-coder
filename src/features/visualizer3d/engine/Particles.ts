@@ -25,21 +25,35 @@ export class ParticleSystem {
   }
 
   /** Registered as an engine frame callback. */
+ /** Registered as an engine frame callback. */
   tick = (_t: number) => {
+    void _t;
+
     this.particles = this.particles.filter((p) => {
       p.progress += p.speed;
+
       if (p.progress >= 1) {
         this.scene.remove(p.mesh);
         return false;
       }
+
       const pr = Math.max(0, p.progress);
       const px = p.from.x + (p.to.x - p.from.x) * pr;
       const pz = p.from.z + (p.to.z - p.from.z) * pr;
       const arc = Math.sin(pr * Math.PI) * 3.5;
       const py = p.from.y + (p.to.y - p.from.y) * pr + arc;
+
       p.mesh.position.set(px, py, pz);
-      (p.mesh.material as THREE.MeshStandardMaterial).opacity = Math.min(1, (1 - pr) * 2);
-      p.mesh.scale.setScalar(0.25 + Math.sin(pr * Math.PI) * 0.35);
+
+      (p.mesh.material as THREE.MeshStandardMaterial).opacity = Math.min(
+        1,
+        (1 - pr) * 2,
+      );
+
+      p.mesh.scale.setScalar(
+        0.25 + Math.sin(pr * Math.PI) * 0.35,
+      );
+
       return true;
     });
   };

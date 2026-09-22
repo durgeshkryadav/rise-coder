@@ -9,11 +9,24 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import type { VisualizerState, VisualizerActions } from '../hooks/useVisualizer';
+/** Minimal shape used by ControlPanel (Two Sum + generic algorithm pages). */
+export interface ControlPanelState {
+  currentStep: number;
+  totalSteps: number;
+  step: { text?: string } | null;
+  isPlaying: boolean;
+}
+
+export interface ControlPanelActions {
+  next: () => void;
+  prev: () => void;
+  reset: () => void;
+  togglePlay: () => void;
+}
 
 interface Props {
-  state: VisualizerState;
-  actions: VisualizerActions;
+  state: ControlPanelState;
+  actions: ControlPanelActions;
 }
 
 export const ControlPanel: React.FC<Props> = ({ state, actions }) => {

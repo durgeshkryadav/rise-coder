@@ -71,7 +71,7 @@ const ValidAnagram3DPage: React.FC = () => {
       <GenericLegendPanel items={VALID_ANAGRAM_LEGEND} />
       <GenericDataPanel data={step?.hashMap ?? {}} label="count (dict)" />
 
-      <ControlPanel state={state as any} actions={actions as any} />
+      <ControlPanel state={state} actions={actions} />
     </Box>
   );
 };

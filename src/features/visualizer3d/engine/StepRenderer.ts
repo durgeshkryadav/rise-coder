@@ -82,7 +82,7 @@ export class StepRenderer {
     this.renderSearchProbe(step);
 
     // ── 3D store arrow ──
-    this.renderStoreArrow(step, nums);
+    this.renderStoreArrow(step);
   }
 
   renderEmpty() {
@@ -338,7 +338,7 @@ export class StepRenderer {
     this.engine.onUpdate(this.searchProbeCb);
   }
 
-  private renderStoreArrow(step: AlgorithmStep, nums: number[]) {
+  private renderStoreArrow(step: AlgorithmStep) {
     if (!step.storeArrow) return;
     const { scene } = this.engine;
     const sa = step.storeArrow;

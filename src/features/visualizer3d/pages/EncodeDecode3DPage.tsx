@@ -68,7 +68,7 @@ const EncodeDecode3DPage: React.FC = () => {
       <GenericLegendPanel items={ENCODE_DECODE_LEGEND} />
       <GenericDataPanel data={step?.hashMap ?? {}} label="result (string/list)" />
 
-      <ControlPanel state={state as any} actions={actions as any} />
+      <ControlPanel state={state} actions={actions} />
     </Box>
   );
 };

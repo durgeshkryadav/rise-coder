@@ -11,7 +11,7 @@ import { SceneBuilder } from '../engine/SceneBuilder';
 import { ParticleSystem } from '../engine/Particles';
 import { StepRenderer } from '../engine/StepRenderer';
 import { ANIMATION } from '../engine/config';
-import type { AlgorithmStep, StepType } from '../algorithms/types';
+import type { AlgorithmStep } from '../algorithms/types';
 
 export interface VisualizerState {
   currentStep: number;

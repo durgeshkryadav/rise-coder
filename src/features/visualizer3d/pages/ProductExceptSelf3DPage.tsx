@@ -68,7 +68,7 @@ const ProductExceptSelf3DPage: React.FC = () => {
       <GenericLegendPanel items={PRODUCT_EXCEPT_SELF_LEGEND} />
       <GenericDataPanel data={step?.hashMap ?? {}} label="result (array)" />
 
-      <ControlPanel state={state as any} actions={actions as any} />
+      <ControlPanel state={state} actions={actions} />
     </Box>
   );
 };

@@ -1,3 +1,5 @@
 import loadable from '@/utils/loadable';
 
-export default loadable(() => import('./index'));
+const HomePageLoadable = loadable(() => import('./index'));
+
+export default HomePageLoadable;

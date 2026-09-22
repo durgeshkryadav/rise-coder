@@ -68,7 +68,7 @@ const LongestConsecutive3DPage: React.FC = () => {
       <GenericLegendPanel items={LONGEST_CONSECUTIVE_LEGEND} />
       <GenericDataPanel data={step?.hashMap ?? {}} label="num_set (set)" />
 
-      <ControlPanel state={state as any} actions={actions as any} />
+      <ControlPanel state={state} actions={actions} />
     </Box>
   );
 };

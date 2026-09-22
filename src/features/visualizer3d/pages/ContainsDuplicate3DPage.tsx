@@ -65,7 +65,7 @@ const ContainsDuplicate3DPage: React.FC = () => {
       <GenericLegendPanel items={CONTAINS_DUPLICATE_LEGEND} />
       <GenericDataPanel data={step?.hashMap ?? {}} label="seen (set)" />
 
-      <ControlPanel state={state as any} actions={actions as any} />
+      <ControlPanel state={state} actions={actions} />
     </Box>
   );
 };

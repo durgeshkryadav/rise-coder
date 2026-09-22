@@ -4,4 +4,6 @@
 
 import loadable from '@/utils/loadable';
 
-export default loadable(() => import('./index'));
+const LocaleToggleLoadable = loadable(() => import('./index'));
+
+export default LocaleToggleLoadable;

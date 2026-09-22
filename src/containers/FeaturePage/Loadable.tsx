@@ -5,6 +5,8 @@
 import loadable from '@/utils/loadable';
 import LoadingIndicator from '@/components/LoadingIndicator';
 
-export default loadable(() => import('./index'), {
+const FeaturePageLoadable = loadable(() => import('./index'), {
   fallback: <LoadingIndicator />,
 });
+
+export default FeaturePageLoadable;

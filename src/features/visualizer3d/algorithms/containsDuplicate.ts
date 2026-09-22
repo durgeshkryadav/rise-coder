@@ -34,7 +34,7 @@ export function generateContainsDuplicateSteps(nums: number[]): GenericStep[] {
   for (let i = 0; i < nums.length; i++) {
     const val = nums[i];
 
-    const cs: GenericCubeState[] = nums.map((v, idx) =>
+    const cs: GenericCubeState[] = nums.map((v) =>
       seen.has(v) ? 'in_set' : 'default',
     );
     cs[i] = 'checking';

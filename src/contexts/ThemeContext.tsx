@@ -39,6 +39,7 @@ export function ThemeModeProvider({ children }: ThemeModeProviderProps) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useThemeMode(): ThemeContextValue {
   const context = useContext(ThemeContext);
   if (!context) {
