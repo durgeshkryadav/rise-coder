@@ -65,7 +65,7 @@ export function generateGroupAnagramsSteps(strs: string[]): GenericStep[] {
     if (!groups[key]) groups[key] = [];
     groups[key].push(s);
 
-    const afterCs: GenericCubeState[] = strs.map((str, idx) => {
+    const afterCs: GenericCubeState[] = strs.map((_, idx) => {
       if (idx <= i) return 'grouped';
       return 'default';
     });

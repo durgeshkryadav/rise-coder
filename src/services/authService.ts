@@ -1,6 +1,13 @@
-import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
+import type { AuthChangeEvent, Session, SupabaseClient } from '@supabase/supabase-js';
 import { supabase } from './supabase';
 import type { AuthCredentials } from '../types';
+
+function requireSupabase(): SupabaseClient {
+  if (!supabase) {
+    throw new Error('Supabase client is not configured.');
+  }
+  return supabase;
+}
 
 /**
  * AuthService — Wraps Supabase Auth methods.
@@ -12,7 +19,7 @@ const AuthService = {
    * Supabase sends a confirmation email by default.
    */
   async signUp({ email, password }: AuthCredentials) {
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await requireSupabase().auth.signUp({ email, password });
     if (error) throw error;
     return data;
   },
@@ -21,7 +28,7 @@ const AuthService = {
    * Sign in with email & password.
    */
   async signIn({ email, password }: AuthCredentials) {
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await requireSupabase().auth.signInWithPassword({ email, password });
     if (error) throw error;
     return data;
   },
@@ -30,7 +37,7 @@ const AuthService = {
    * Sign out the current user.
    */
   async signOut() {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await requireSupabase().auth.signOut();
     if (error) throw error;
   },
 
@@ -39,7 +46,7 @@ const AuthService = {
    * The user will receive a link pointing to your reset password page.
    */
   async resetPassword(email: string) {
-    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    const { data, error } = await requireSupabase().auth.resetPasswordForEmail(email, {
       redirectTo: `${window.location.origin}/auth/reset-password`,
     });
     if (error) throw error;
@@ -50,7 +57,7 @@ const AuthService = {
    * Update the user's password (after clicking reset link).
    */
   async updatePassword(newPassword: string) {
-    const { data, error } = await supabase.auth.updateUser({ password: newPassword });
+    const { data, error } = await requireSupabase().auth.updateUser({ password: newPassword });
     if (error) throw error;
     return data;
   },
@@ -59,7 +66,7 @@ const AuthService = {
    * Get current session.
    */
   async getSession() {
-    const { data: { session }, error } = await supabase.auth.getSession();
+    const { data: { session }, error } = await requireSupabase().auth.getSession();
     if (error) throw error;
     return session;
   },
@@ -68,7 +75,7 @@ const AuthService = {
    * Get current user.
    */
   async getUser() {
-    const { data: { user }, error } = await supabase.auth.getUser();
+    const { data: { user }, error } = await requireSupabase().auth.getUser();
     if (error) throw error;
     return user;
   },
@@ -78,7 +85,7 @@ const AuthService = {
    * Returns an unsubscribe function.
    */
   onAuthStateChange(callback: (event: AuthChangeEvent, session: Session | null) => void) {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(callback);
+    const { data: { subscription } } = requireSupabase().auth.onAuthStateChange(callback);
     return subscription;
   },
 };
