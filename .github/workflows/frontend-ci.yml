@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   quality:
-    name: Frontend Quality
+    name: Frontend Quality Durgesh
     runs-on: ubuntu-latest
 
     steps:

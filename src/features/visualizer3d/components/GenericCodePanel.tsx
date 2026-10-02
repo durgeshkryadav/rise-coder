@@ -12,7 +12,7 @@ interface Props {
   activeLines?: number[];
   codeClass?: string;
   timeComplexity?: string;
-  spaceComplexity?: string;
+  spaceComplexity?:
 }
 
 export const GenericCodePanel: React.FC<Props> = ({
